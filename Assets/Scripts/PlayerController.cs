@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         Vector3 velocity = rb.linearVelocity;
         Vector2 horizontalVelocity = new Vector2(velocity.x, velocity.z);
 
-        rb.linearVelocity = new Vector3(horizontalVelocity.x, velocity.y, horizontalVelocity.y);
+        rb.linearVelocity = new Vector3(horizontalVelocity.x, velocity.y, horizontalVelocity.x);
     }
 
     private void MovePlayer(Vector2 dirn)
@@ -28,7 +28,5 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = new Vector3(dirn.x, 0f, dirn.y);
 
         rb.linearVelocity = direction * maxSpeed;
-     
-
     }
 }
