@@ -1,16 +1,7 @@
+using System.Collections;
 using UnityEngine;
 
 public class fruit : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //use this class to implement any fruit behavior like bouncing , rotating, etc.
 }
