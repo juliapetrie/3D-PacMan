@@ -70,24 +70,27 @@ public class PlayerController : MonoBehaviour
 
     private void MoveWithSlide(Vector3 desiredVelocity)
     {
-        // Calculate movement for this frame
-        Vector3 movement = desiredVelocity * Time.fixedDeltaTime;
-        Vector3 direction = movement.normalized;
-        float distance = movement.magnitude + 0.1f; // Add a small buffer to the distance
-        Debug.DrawRay(rb.position, direction * distance, Color.red, 0.1f);
-        int layerMask = LayerMask.GetMask("Default");
+        Vector3 direction = desiredVelocity.normalized;
+        float distance = desiredVelocity.magnitude * Time.fixedDeltaTime + 0.5f;
+
+        // Debug ray to visualize the raycast
+        Debug.DrawRay(rb.position, direction * distance, Color.red, 10f);
+
         // Check for potential collisions
         RaycastHit hit;
-        if (Physics.Raycast(rb.position, movement.normalized, out hit, movement.magnitude, layerMask))
+        if (Physics.Raycast(rb.position, direction, out hit, distance))
         {
-            Debug.Log("obstacle detected");
+            Debug.Log("Obstacle detected");
             // Adjust movement direction by sliding along the obstacle
-            Vector3 slideDirection = Vector3.ProjectOnPlane(movement, hit.normal);
-            rb.MovePosition(rb.position + slideDirection);
+            Vector3 slideDirection = Vector3.ProjectOnPlane(desiredVelocity, hit.normal).normalized;
+            Vector3 slideMovement = slideDirection * desiredVelocity.magnitude * Time.fixedDeltaTime;
+            //rb.MovePosition(rb.position + slideMovement);
         }
         else
         {
+            Debug.Log("No obstacle");
             // No obstacle, move normally
+            Vector3 movement = desiredVelocity * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + movement);
         }
     }
