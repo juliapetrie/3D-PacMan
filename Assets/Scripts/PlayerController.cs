@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private Vector3 currentDirection = Vector3.zero;
+    private Vector3 initialDirection = Vector3.zero;
     //private CimenachineCamera camera;
 
     public bool hasSprintPowerup = false;
@@ -29,26 +30,22 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //initialDirection = transform.forward;
+
         float speed = hasSprintPowerup ? sprintSpeed : normalSpeed;
         Vector3 movement = currentDirection * speed;
+        Vector3 initialMovement = initialDirection * speed;
 
-        if (currentDirection != Vector3.zero)
+        if (currentDirection != Vector3.zero) //move the user normally
         {
-            MoveWithSlide(movement);
-            //Vector3 movement = currentDirection * speed * Time.fixedDeltaTime;
-            //rb.MovePosition(rb.position + movement);
-
+            MoveWithRaycast(movement, initialMovement);
             bufferTimer = 0f;
         }
-        else if (bufferTimer > 0f)
+        else if (bufferTimer > 0f) //try to move user with the buffered direction
         {
-            // Decrease the buffer timer
             bufferTimer -= Time.fixedDeltaTime;
-
-            // Attempt to move using the buffered direction
-            Vector3 bufferedMovement = bufferedDirection * speed;// * Time.fixedDeltaTime;
-            //rb.MovePosition(rb.position + movement);
-            MoveWithSlide(bufferedMovement);
+            Vector3 bufferedMovement = bufferedDirection * speed;
+            MoveWithRaycast(bufferedMovement, initialMovement);
         }
         else
         {
@@ -62,36 +59,43 @@ public class PlayerController : MonoBehaviour
         {
             currentDirection = new Vector3(direction.x, 0f, direction.y).normalized;
 
+            initialDirection = transform.forward.normalized;
             bufferedDirection = currentDirection;
             bufferTimer = bufferTime;
         }
 
     }
 
-    private void MoveWithSlide(Vector3 desiredVelocity)
+    private void MoveWithRaycast(Vector3 desiredVelocity, Vector3 initialVelocity)
     {
-        Vector3 direction = desiredVelocity.normalized;
+        /*
+         * get intended direction using desiredVelocity
+         * get distance of the raycast
+         * shoot a raycast, detect wall
+         * if wall: keep moving in players initial direction
+         * if no wall: move in players intended direction
+         */
+        Vector3 desiredDirection = desiredVelocity.normalized;
         float distance = desiredVelocity.magnitude * Time.fixedDeltaTime + 0.5f;
 
-        // Debug ray to visualize the raycast
-        Debug.DrawRay(rb.position, direction * distance, Color.red, 10f);
+        Debug.DrawRay(rb.position, desiredDirection * distance, Color.red, 10f);
 
-        // Check for potential collisions
         RaycastHit hit;
-        if (Physics.Raycast(rb.position, direction, out hit, distance))
+        if (Physics.Raycast(rb.position, desiredDirection, out hit, distance))
         {
+            //obstacle
             Debug.Log("Obstacle detected");
-            // Adjust movement direction by sliding along the obstacle
-            Vector3 slideDirection = Vector3.ProjectOnPlane(desiredVelocity, hit.normal).normalized;
-            Vector3 slideMovement = slideDirection * desiredVelocity.magnitude * Time.fixedDeltaTime;
-            //rb.MovePosition(rb.position + slideMovement);
+            Vector3 movement = initialVelocity * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + movement);
         }
         else
         {
-            Debug.Log("No obstacle");
-            // No obstacle, move normally
+            //no obstacle
+            //Debug.Log("No obstacle");
             Vector3 movement = desiredVelocity * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + movement);
+            transform.rotation = Quaternion.LookRotation(currentDirection);
+
         }
     }
 }
