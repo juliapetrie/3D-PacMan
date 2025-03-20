@@ -10,12 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float bufferTime = 0.2f;
 
     private Rigidbody rb;
-    private float bufferTimer = 0f;
     public bool hasSprintPowerup = false;
 
-    private Vector3 currentDirection = Vector3.zero; //current movement direction
-    private Vector3 bufferedDirection = Vector3.zero; //turn forgiveness input buffer (intended direction)
-    private Vector3 initialDirection = Vector3.zero; //initial direction of the player
+    private Vector3 intendedDirection = Vector3.zero; //intended movement direction
+    private Vector3 initialDirection = Vector3.zero; //initial direction of the player object
 
     private void Awake()
     {
@@ -27,24 +25,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //initialDirection = transform.forward;
-
         float speed = hasSprintPowerup ? sprintSpeed : normalSpeed;
-        Vector3 movement = currentDirection * speed;
+        Vector3 movement = intendedDirection * speed;
         Vector3 initialMovement = initialDirection * speed;
 
-        if (currentDirection != Vector3.zero) //move the user normally
+        if (intendedDirection != Vector3.zero)
         {
-
             MoveWithRaycast(movement, initialMovement);
-            bufferedDirection = currentDirection;
-            //bufferTimer = 0f;
-        }
-        else if (bufferTimer > 0f) //try to move user with the buffered direction
-        {
-            //bufferTimer -= Time.fixedDeltaTime;
-            Vector3 bufferedMovement = bufferedDirection * speed;
-            MoveWithRaycast(bufferedMovement, initialMovement);
         }
         else
         {
@@ -56,11 +43,10 @@ public class PlayerController : MonoBehaviour
     {
         if(direction != Vector2.zero)
         {
-            currentDirection = new Vector3(direction.x, 0f, direction.y).normalized;
+            intendedDirection = new Vector3(direction.x, 0f, direction.y).normalized;
 
-            initialDirection = transform.forward.normalized;
-            bufferedDirection = currentDirection;
-            bufferTimer = bufferTime;
+            initialDirection = transform.forward.normalized; //store initial direction
+            //bufferedDirection = currentDirection; //store intended direction
         }
 
     }
@@ -72,7 +58,7 @@ public class PlayerController : MonoBehaviour
          * get distance of the raycast
          * shoot a raycast, detect wall
          * if wall: keep moving in players initial direction
-         * if no wall: move in players intended direction
+         * if no wall: move in players intended direction, reset direction buffer.
          */
         Vector3 desiredDirection = desiredVelocity.normalized;
         float distance = desiredVelocity.magnitude * Time.fixedDeltaTime + 0.5f;
@@ -80,14 +66,14 @@ public class PlayerController : MonoBehaviour
         BoxCollider boxCollider = GetComponentInChildren<BoxCollider>();
         if (boxCollider == null) return;
 
-        Vector3 boundsExtents = boxCollider.bounds.extents;
-
+        //make sure the rays are being cast perpendicular to the characters rotation
         Vector3 perpendicular = new Vector3(desiredDirection.z, 0f, -desiredDirection.x).normalized;
 
+        //set rays to the left and right of the hitbox, but 1 ish pixel in to avoid side walls
+        Vector3 boundsExtents = boxCollider.bounds.extents;
         Vector3 leftEdge = rb.position - perpendicular * (boundsExtents.x - 0.01f);
         Vector3 rightEdge = rb.position + perpendicular * (boundsExtents.x - 0.01f);
 
-        //Debug.DrawRay(rb.position, desiredDirection * distance, Color.red, 10f);
         Debug.DrawRay(leftEdge, desiredDirection * distance, Color.red, 10f);
         Debug.DrawRay(rightEdge, desiredDirection * distance, Color.red, 10f);
 
@@ -99,20 +85,16 @@ public class PlayerController : MonoBehaviour
         if (leftHit || rightHit || centerHit)
         {
             //obstacle
-            Debug.Log("Obstacle detected");
-
             Vector3 movement = initialVelocity * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + movement);
         }
         else
         {
             //no obstacle
-            //Debug.Log("No obstacle");
             Vector3 movement = desiredVelocity * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + movement);
-            transform.rotation = Quaternion.LookRotation(currentDirection);
-            bufferedDirection = Vector3.zero;
-            currentDirection = transform.forward;
-        }
+            transform.rotation = Quaternion.LookRotation(intendedDirection);
+            intendedDirection = transform.forward;
+        }           
     }
 }
