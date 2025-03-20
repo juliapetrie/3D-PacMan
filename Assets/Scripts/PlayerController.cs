@@ -35,13 +35,14 @@ public class PlayerController : MonoBehaviour
 
         if (currentDirection != Vector3.zero) //move the user normally
         {
-            MoveWithRaycast(movement, initialMovement);
 
-            bufferTimer = 0f;
+            MoveWithRaycast(movement, initialMovement);
+            bufferedDirection = currentDirection;
+            //bufferTimer = 0f;
         }
         else if (bufferTimer > 0f) //try to move user with the buffered direction
         {
-            bufferTimer -= Time.fixedDeltaTime;
+            //bufferTimer -= Time.fixedDeltaTime;
             Vector3 bufferedMovement = bufferedDirection * speed;
             MoveWithRaycast(bufferedMovement, initialMovement);
         }
@@ -83,8 +84,8 @@ public class PlayerController : MonoBehaviour
 
         Vector3 perpendicular = new Vector3(desiredDirection.z, 0f, -desiredDirection.x).normalized;
 
-        Vector3 leftEdge = rb.position - perpendicular * boundsExtents.x;
-        Vector3 rightEdge = rb.position + perpendicular * boundsExtents.x;
+        Vector3 leftEdge = rb.position - perpendicular * (boundsExtents.x - 0.01f);
+        Vector3 rightEdge = rb.position + perpendicular * (boundsExtents.x - 0.01f);
 
         //Debug.DrawRay(rb.position, desiredDirection * distance, Color.red, 10f);
         Debug.DrawRay(leftEdge, desiredDirection * distance, Color.red, 10f);
@@ -110,7 +111,8 @@ public class PlayerController : MonoBehaviour
             Vector3 movement = desiredVelocity * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + movement);
             transform.rotation = Quaternion.LookRotation(currentDirection);
-
+            bufferedDirection = Vector3.zero;
+            currentDirection = transform.forward;
         }
     }
 }
