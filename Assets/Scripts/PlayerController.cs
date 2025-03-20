@@ -78,10 +78,26 @@ public class PlayerController : MonoBehaviour
         Vector3 desiredDirection = desiredVelocity.normalized;
         float distance = desiredVelocity.magnitude * Time.fixedDeltaTime + 0.5f;
 
-        Debug.DrawRay(rb.position, desiredDirection * distance, Color.red, 10f);
+        BoxCollider boxCollider = GetComponentInChildren<BoxCollider>();
+        if (boxCollider == null) return;
+
+        Vector3 boundsExtents = boxCollider.bounds.extents;
+
+        Vector3 perpendicular = new Vector3(desiredDirection.z, 0f, -desiredDirection.x).normalized;
+
+        Vector3 leftEdge = rb.position - perpendicular * boundsExtents.x;
+        Vector3 rightEdge = rb.position + perpendicular * boundsExtents.x;
+
+        //Debug.DrawRay(rb.position, desiredDirection * distance, Color.red, 10f);
+        Debug.DrawRay(leftEdge, desiredDirection * distance, Color.red, 10f);
+        Debug.DrawRay(rightEdge, desiredDirection * distance, Color.red, 10f);
 
         RaycastHit hit;
-        if (Physics.Raycast(rb.position, desiredDirection, out hit, distance))
+        bool leftHit = Physics.Raycast(leftEdge, desiredDirection, out hit, distance);
+        bool rightHit = Physics.Raycast(rightEdge, desiredDirection, out hit, distance);
+        bool centerHit = Physics.Raycast(rb.position, desiredDirection, out hit, distance);
+
+        if (leftHit || rightHit || centerHit)
         {
             //obstacle
             Debug.Log("Obstacle detected");
