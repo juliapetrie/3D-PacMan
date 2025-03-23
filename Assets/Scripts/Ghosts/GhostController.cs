@@ -3,20 +3,47 @@ using UnityEngine.AI;
 
 public class GhostController : MonoBehaviour
 {
-    public Transform pacman;  // Reference to Pac-Man's transform
+    public Transform pacman;
     private NavMeshAgent agent;
+    private bool isFrightened = false;
+    private float frightenedTime = 0f;
+    public float frightenedSpeed = 3f;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();  // Get the NavMeshAgent attached to the ghost
+        agent = GetComponent<NavMeshAgent>(); 
     }
 
     void Update()
     {
-        if (pacman != null)  // Make sure Pac-Man is assigned
+        if (isFrightened)
         {
-            // Make the ghost chase Pac-Man by setting its destination to Pac-Man's position
+            frightenedTime -= Time.deltaTime;
+
+            if (frightenedTime <= 0f)
+            {
+                isFrightened = false;
+            }
+            else
+            {
+                Vector3 directionAwayFromPacMan = transform.position - pacman.position;
+                agent.SetDestination(transform.position + directionAwayFromPacMan);
+                return;
+            }
+        }
+
+
+        if (!isFrightened)
+        {
             agent.SetDestination(pacman.position);
         }
+    }
+
+    public void StartFrightenedState(float duration)
+    {
+        isFrightened = true;
+        frightenedTime = duration;
+        agent.speed = frightenedSpeed;
+        Debug.Log("Ghost is now frightened for " + duration + " seconds!");
     }
 }
