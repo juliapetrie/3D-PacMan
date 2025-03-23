@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputManager inputManager;
     [SerializeField] private float normalSpeed = 5f;
     [SerializeField] private float sprintSpeed = 10f;
-    [SerializeField] private float bufferTime = 0.2f;
+    [SerializeField] private float pelletSpeed = 7f;
 
     private Rigidbody rb;
     public bool hasSprintPowerup = false;
+    public bool hasPelletPowerup = false;
+    private bool canMove = true;
 
     private Vector3 intendedDirection = Vector3.zero; //intended movement direction
     private Vector3 initialDirection = Vector3.zero; //initial direction of the player object
@@ -25,18 +27,38 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float speed = hasSprintPowerup ? sprintSpeed : normalSpeed;
-        Vector3 movement = intendedDirection * speed;
-        Vector3 initialMovement = initialDirection * speed;
-
-        if (intendedDirection != Vector3.zero)
+        if (canMove)
         {
-            MoveWithRaycast(movement, initialMovement);
+            float speed = normalSpeed;
+            if (hasPelletPowerup) speed = pelletSpeed;
+            else if (hasSprintPowerup) speed = sprintSpeed;
+
+            Vector3 movement = intendedDirection * speed;
+            Vector3 initialMovement = initialDirection * speed;
+
+            if (intendedDirection != Vector3.zero)
+            {
+                MoveWithRaycast(movement, initialMovement);
+            }
+            else
+            {
+                rb.linearVelocity = Vector3.zero;
+            }
         }
-        else
+    }
+
+    public void DisableMovement()
+    {
+        canMove = false;
+        if(!canMove)
         {
             rb.linearVelocity = Vector3.zero;
         }
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
     }
 
     private void MovePlayer(Vector2 direction)
