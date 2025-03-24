@@ -2,6 +2,8 @@ using System.Runtime.ExceptionServices;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
+
 
 public class GhostController : MonoBehaviour
 {
@@ -11,15 +13,21 @@ public class GhostController : MonoBehaviour
     private NavMeshAgent agent;
     private float distanceThreshold = 8f;
 
+    private bool isReturningHome;
+
     [SerializeField] private Transform ClydeScatterTarget;
     [SerializeField] private Transform BlinkyScatterTarget;
     [SerializeField] private Transform InkyScatterTarget;
     [SerializeField] private Transform PinkyScatterTarget;
 
+    [SerializeField] private Transform homePosition;
+    [SerializeField] private float respawnTime = 5f;
+
 
     private bool isFrightened = false;
     private float frightenedTime = 0f;
     public float frightenedSpeed = 3f;
+    private float eatenSpeed = 5f;
     private float normalSpeed = 2;
 
     private bool isInScatterMode = true;  
@@ -35,6 +43,10 @@ public class GhostController : MonoBehaviour
 
     void Update()
     {
+        if (isReturningHome)
+        {
+            return;
+        }
         if (isFrightened)
         {
             RunAwayFromPacMan();
@@ -49,6 +61,33 @@ public class GhostController : MonoBehaviour
         {
             HandleState();
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isFrightened && other.CompareTag("Pacman"))
+        {
+            Debug.Log("Pac-Man caught the ghost!");
+            returnHome();
+        }
+    }
+
+
+    public void returnHome()
+    {
+        isReturningHome = true;
+        //add the ui (only eyes to be seen when travelling home)
+        agent.speed = eatenSpeed;
+        agent.SetDestination(homePosition.position);
+        StartCoroutine(RespawnAfterDelay());
+        
+    }
+
+    private IEnumerator RespawnAfterDelay()
+    {
+        yield return new WaitForSeconds(respawnTime);
+        isReturningHome = false;
+        ExitFrightenedState();
     }
 
     private void HandleState()
