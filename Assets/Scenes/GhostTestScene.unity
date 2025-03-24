@@ -263,7 +263,13 @@ MonoBehaviour:
   blinky: {fileID: 0}
   pacman: {fileID: 2067190706}
   bottomLeftCorner: {fileID: 2070685241}
+  ClydeScatterTarget: {fileID: 0}
+  BlinkyScatterTarget: {fileID: 0}
+  InkyScatterTarget: {fileID: 0}
+  PinkyScatterTarget: {fileID: 1363525615}
   frightenedSpeed: 3
+  scatterTime: 7
+  chaseTime: 20
 --- !u!195 &72587879
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -866,7 +872,13 @@ MonoBehaviour:
   blinky: {fileID: 0}
   pacman: {fileID: 2067190706}
   bottomLeftCorner: {fileID: 2070685241}
+  ClydeScatterTarget: {fileID: 0}
+  BlinkyScatterTarget: {fileID: 748623361}
+  InkyScatterTarget: {fileID: 0}
+  PinkyScatterTarget: {fileID: 0}
   frightenedSpeed: 3
+  scatterTime: 7
+  chaseTime: 20
 --- !u!1 &434130146
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +915,13 @@ MonoBehaviour:
   blinky: {fileID: 0}
   pacman: {fileID: 2067190706}
   bottomLeftCorner: {fileID: 2070685241}
+  ClydeScatterTarget: {fileID: 2070685241}
+  BlinkyScatterTarget: {fileID: 0}
+  InkyScatterTarget: {fileID: 0}
+  PinkyScatterTarget: {fileID: 0}
   frightenedSpeed: 3
+  scatterTime: 7
+  chaseTime: 20
 --- !u!195 &434130148
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1180,7 +1198,13 @@ MonoBehaviour:
   blinky: {fileID: 360586290}
   pacman: {fileID: 2067190706}
   bottomLeftCorner: {fileID: 2070685241}
+  ClydeScatterTarget: {fileID: 0}
+  BlinkyScatterTarget: {fileID: 0}
+  InkyScatterTarget: {fileID: 1597444476}
+  PinkyScatterTarget: {fileID: 0}
   frightenedSpeed: 3
+  scatterTime: 7
+  chaseTime: 20
 --- !u!195 &703194460
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1402,6 +1426,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736531784}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &748623360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 748623361}
+  m_Layer: 0
+  m_Name: BlinkyScatterTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &748623361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748623360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5, y: -1.62, z: 12.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &905101683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,6 +1942,37 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &1363525614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363525615}
+  m_Layer: 0
+  m_Name: PinkyScatterTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1363525615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363525614}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.72, y: -1.62, z: 18.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1541406561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,6 +2004,37 @@ Transform:
   m_Children:
   - {fileID: 1096907346}
   - {fileID: 736531785}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1597444475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1597444476}
+  m_Layer: 0
+  m_Name: InkyScatterTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1597444476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597444475}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.08, y: -1.62, z: -3.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1699870376
@@ -2768,3 +2885,6 @@ SceneRoots:
   - {fileID: 310877813}
   - {fileID: 491830024}
   - {fileID: 2070685241}
+  - {fileID: 748623361}
+  - {fileID: 1597444476}
+  - {fileID: 1363525615}
