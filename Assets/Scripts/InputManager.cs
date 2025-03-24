@@ -7,25 +7,21 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-
-        Vector2 input = Vector2.zero;
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            input += Vector2.up;
+            OnMove?.Invoke(Vector2.up);
         }
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            input += Vector2.down;
+            OnMove?.Invoke(Vector2.down);
         }
-        if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            input += Vector2.left;
+            OnMove?.Invoke(Vector2.left);
         }
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            input += Vector2.right;
+            OnMove?.Invoke(Vector2.right);
         }
-
-        OnMove?.Invoke(input.normalized);
     }
 }

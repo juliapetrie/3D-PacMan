@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 intendedDirection = Vector3.zero; //intended movement direction
     private Vector3 initialDirection = Vector3.zero; //initial direction of the player object
+    
 
     private void Awake()
     {
