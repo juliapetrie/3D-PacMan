@@ -7,13 +7,12 @@ public class GhostController : MonoBehaviour
 
     public Transform pacman;
     private NavMeshAgent agent;
-
-    public float offsetDistance = 2f;
+    public Transform blinky;
 
     private bool isFrightened = false;
     private float frightenedTime = 0f;
     public float frightenedSpeed = 3f;
-    private float normalSpeed = 5f;
+    private float normalSpeed = 2;
 
     public enum GhostType
     {
@@ -26,7 +25,8 @@ public class GhostController : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>(); 
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = normalSpeed;
     }
 
     void Update()
@@ -66,7 +66,14 @@ public class GhostController : MonoBehaviour
                 agent.SetDestination(pinkyTarget);
                 break;
 
-       
+            case GhostType.Inky:
+                Vector3 inkyOffset = pacman.position + (pacman.forward * 5);
+                Vector3 blinkyToInky = inkyOffset - blinky.position;
+                Vector3 inkyTarget = inkyOffset + blinkyToInky;
+                agent.SetDestination(inkyTarget);
+                break;
+
+
         }
     }
 
