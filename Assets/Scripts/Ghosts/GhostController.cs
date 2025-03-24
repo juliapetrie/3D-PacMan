@@ -3,11 +3,26 @@ using UnityEngine.AI;
 
 public class GhostController : MonoBehaviour
 {
+    public GhostType ghostType;
+
     public Transform pacman;
     private NavMeshAgent agent;
+
+    public float offsetDistance = 2f;
+
     private bool isFrightened = false;
     private float frightenedTime = 0f;
     public float frightenedSpeed = 3f;
+    private float normalSpeed = 5f;
+
+    public enum GhostType
+    {
+        Blinky,
+        Pinky,
+        Inky,
+        Clyde
+    }
+
 
     void Start()
     {
@@ -18,24 +33,40 @@ public class GhostController : MonoBehaviour
     {
         if (isFrightened)
         {
+            RunAwayFromPacMan();
             frightenedTime -= Time.deltaTime;
 
             if (frightenedTime <= 0f)
             {
-                isFrightened = false;
+                ExitFrightenedState();
             }
-            else
-            {
-                Vector3 directionAwayFromPacMan = transform.position - pacman.position;
-                agent.SetDestination(transform.position + directionAwayFromPacMan);
-                return;
-            }
+        }
+        else 
+        {
+            Chase();
         }
 
 
         if (!isFrightened)
         {
             agent.SetDestination(pacman.position);
+        }
+    }
+
+    void Chase()
+    {
+        switch (ghostType)
+        {
+            case GhostType.Blinky:
+                agent.SetDestination(pacman.position);
+                break;
+
+            case GhostType.Pinky:
+                Vector3 pinkyTarget = pacman.position + (pacman.forward * 10);
+                agent.SetDestination(pinkyTarget);
+                break;
+
+       
         }
     }
 
@@ -46,4 +77,20 @@ public class GhostController : MonoBehaviour
         agent.speed = frightenedSpeed;
         Debug.Log("Ghost is now frightened for " + duration + " seconds!");
     }
+
+    void RunAwayFromPacMan()
+    {
+        Vector3 directionAwayFromPacMan = transform.position - pacman.position;
+        agent.SetDestination(transform.position + directionAwayFromPacMan);
+    }
+
+    private void ExitFrightenedState()
+    {
+        isFrightened = false;
+        agent.speed = normalSpeed;
+        Debug.Log("Ghost is no longer frightened!");
+    }
+
+
+
 }
