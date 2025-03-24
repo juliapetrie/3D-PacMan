@@ -3,8 +3,8 @@ using UnityEngine;
 public class PowerPellet : MonoBehaviour
 {
 
-    public float frightenedDuration = 7f;  
-    public GhostManager ghostManager;   
+    public float frightenedDuration = 7f;
+    public GhostManager ghostManager;
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,7 @@ public class PowerPellet : MonoBehaviour
             {
                 ghostManager.FrightenAllGhosts(frightenedDuration);
             }
-         
+
             Destroy(gameObject);
         }
     }
