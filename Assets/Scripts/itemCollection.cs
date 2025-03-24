@@ -6,7 +6,7 @@ public class itemCollection : MonoBehaviour
 {
     public float sprintDuration = 2f;
     public float pelletDuration = 8f;
-    public UnityEvent OnCoinCollected = new();
+    public UnityEvent OnPelletCollected = new();
     [SerializeField] private PlayerController playerController;
 
     private void Start()
@@ -17,10 +17,18 @@ public class itemCollection : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.transform.tag == "Coin")
+        //disable the collider to avoid duplicate collisions
+        Collider collider = other.GetComponent<Collider>();
+        if (collider != null)
         {
-            OnCoinCollected.Invoke();
+            collider.enabled = false;
+        }
+
+        if (other.transform.tag == "Pellet")
+        {
+            Debug.Log("pellet collected");
             Destroy(other.gameObject);
+            OnPelletCollected?.Invoke();
         }
         else if (other.transform.tag == "Fruit")
         {

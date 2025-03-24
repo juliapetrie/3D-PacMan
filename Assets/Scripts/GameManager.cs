@@ -6,26 +6,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int lives = 3;
     [SerializeField] private float score = 0;
     [SerializeField] private InputManager inputManager;
-    [SerializeField] private GameObject coinCollection;
+    [SerializeField] private GameObject itemCollection;
     //[SerializeField] private TextMeshProUGUI scoreText;
 
 
-    private itemCollection itemCollection;
+    private itemCollection itemCollector;
 
     private void Awake()
     {
-        itemCollection = FindFirstObjectByType<itemCollection>();
-        if (itemCollection != null)
+        itemCollector = FindFirstObjectByType<itemCollection>();
+        if (itemCollector != null)
         {
-            itemCollection.OnCoinCollected.AddListener(IncrementScore);
+            itemCollector.OnPelletCollected.AddListener(IncrementScore);
         }
     }
 
     private void IncrementScore()
     {
         score++;
+        Debug.Log($"Score: {score}");
         //scoreText.text = $"Coins: {score}";
     }
-
-    //Score, settings, quit game, etc. functions go below
 }
