@@ -3,10 +3,12 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class GhostController : MonoBehaviour
 {
+
     public Transform blinky;
     public Transform pacman;
     public Transform bottomLeftCorner;
@@ -30,9 +32,9 @@ public class GhostController : MonoBehaviour
     private float eatenSpeed = 5f;
     private float normalSpeed = 2;
 
-    private bool isInScatterMode = true;  
+    private bool isInScatterMode = true;
     private float stateTimer = 0f;
-    public float scatterTime = 4f;  
+    public float scatterTime = 4f;
     public float chaseTime = 10f;
 
     void Start()
@@ -80,7 +82,7 @@ public class GhostController : MonoBehaviour
         agent.speed = eatenSpeed;
         agent.SetDestination(homePosition.position);
         StartCoroutine(RespawnAfterDelay());
-        
+
     }
 
     private IEnumerator RespawnAfterDelay()
@@ -96,7 +98,7 @@ public class GhostController : MonoBehaviour
 
         if (stateTimer <= 0f)
         {
-            
+
             SwitchState();
         }
         if (isInScatterMode)
@@ -115,11 +117,11 @@ public class GhostController : MonoBehaviour
 
         if (isInScatterMode)
         {
-            stateTimer = scatterTime;  
+            stateTimer = scatterTime;
         }
         else
         {
-            stateTimer = chaseTime;   
+            stateTimer = chaseTime;
 
         }
     }

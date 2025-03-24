@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 72587879}
   - component: {fileID: 72587878}
   - component: {fileID: 72587884}
+  - component: {fileID: 72587885}
   m_Layer: 0
   m_Name: Pinky
   m_TagString: Untagged
@@ -263,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blinky: {fileID: 0}
   pacman: {fileID: 2079949763}
-  bottomLeftCorner: {fileID: 2070685241}
+  bottomLeftCorner: {fileID: 0}
   ClydeScatterTarget: {fileID: 0}
   BlinkyScatterTarget: {fileID: 0}
   InkyScatterTarget: {fileID: 0}
@@ -271,8 +272,8 @@ MonoBehaviour:
   homePosition: {fileID: 496682222}
   respawnTime: 5
   frightenedSpeed: 3
-  scatterTime: 7
-  chaseTime: 20
+  scatterTime: 4
+  chaseTime: 10
 --- !u!195 &72587879
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -409,6 +410,24 @@ CapsuleCollider:
   m_Height: 1.9999999
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &72587885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72587877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60050f2b1eb7abd4ebb62a74d0ee1ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatterTime: 4
+  chaseTime: 10
+  frightenedTime: 0
+  frightenedSpeed: 3
+  normalSpeed: 2
+  PinkyScatterTarget: {fileID: 1363525615}
 --- !u!1 &208518999
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,6 +783,7 @@ GameObject:
   - component: {fileID: 360586286}
   - component: {fileID: 360586291}
   - component: {fileID: 360586292}
+  - component: {fileID: 360586293}
   m_Layer: 0
   m_Name: Blinky
   m_TagString: Untagged
@@ -898,7 +918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blinky: {fileID: 0}
   pacman: {fileID: 2079949763}
-  bottomLeftCorner: {fileID: 2070685241}
+  bottomLeftCorner: {fileID: 0}
   ClydeScatterTarget: {fileID: 0}
   BlinkyScatterTarget: {fileID: 748623361}
   InkyScatterTarget: {fileID: 0}
@@ -906,8 +926,8 @@ MonoBehaviour:
   homePosition: {fileID: 496682222}
   respawnTime: 5
   frightenedSpeed: 3
-  scatterTime: 7
-  chaseTime: 20
+  scatterTime: 4
+  chaseTime: 10
 --- !u!136 &360586292
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -931,6 +951,24 @@ CapsuleCollider:
   m_Height: 1.9999999
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &360586293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360586284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9eee2da35ee0747b1dada48ba649e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatterTime: 4
+  chaseTime: 10
+  frightenedTime: 0
+  frightenedSpeed: 3
+  normalSpeed: 2
+  BlinkyScatterTarget: {fileID: 748623361}
 --- !u!1 &434130146
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,6 +984,7 @@ GameObject:
   - component: {fileID: 434130148}
   - component: {fileID: 434130147}
   - component: {fileID: 434130153}
+  - component: {fileID: 434130154}
   m_Layer: 0
   m_Name: Clyde
   m_TagString: Untagged
@@ -967,7 +1006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blinky: {fileID: 0}
   pacman: {fileID: 2079949763}
-  bottomLeftCorner: {fileID: 2070685241}
+  bottomLeftCorner: {fileID: 0}
   ClydeScatterTarget: {fileID: 2070685241}
   BlinkyScatterTarget: {fileID: 0}
   InkyScatterTarget: {fileID: 0}
@@ -975,8 +1014,8 @@ MonoBehaviour:
   homePosition: {fileID: 496682222}
   respawnTime: 5
   frightenedSpeed: 3
-  scatterTime: 7
-  chaseTime: 20
+  scatterTime: 4
+  chaseTime: 10
 --- !u!195 &434130148
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1113,6 +1152,25 @@ CapsuleCollider:
   m_Height: 1.9999999
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &434130154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434130146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7181724dbcd8f44ca54de8d3b67ad79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatterTime: 4
+  chaseTime: 10
+  frightenedTime: 0
+  frightenedSpeed: 3
+  normalSpeed: 2
+  bottomLeftCorner: {fileID: 2070685241}
+  ClydeScatterTarget: {fileID: 2070685241}
 --- !u!1 &491830023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,6 +1344,7 @@ GameObject:
   - component: {fileID: 703194460}
   - component: {fileID: 703194459}
   - component: {fileID: 703194465}
+  - component: {fileID: 703194466}
   m_Layer: 0
   m_Name: Inky
   m_TagString: Untagged
@@ -1307,7 +1366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blinky: {fileID: 360586290}
   pacman: {fileID: 2079949763}
-  bottomLeftCorner: {fileID: 2070685241}
+  bottomLeftCorner: {fileID: 0}
   ClydeScatterTarget: {fileID: 0}
   BlinkyScatterTarget: {fileID: 0}
   InkyScatterTarget: {fileID: 1597444476}
@@ -1315,8 +1374,8 @@ MonoBehaviour:
   homePosition: {fileID: 496682222}
   respawnTime: 5
   frightenedSpeed: 3
-  scatterTime: 7
-  chaseTime: 20
+  scatterTime: 4
+  chaseTime: 10
 --- !u!195 &703194460
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1453,6 +1512,25 @@ CapsuleCollider:
   m_Height: 1.9999999
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &703194466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703194458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c247b9b54b52940ad8d583746c1ed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatterTime: 4
+  chaseTime: 10
+  frightenedTime: 0
+  frightenedSpeed: 3
+  normalSpeed: 2
+  blinky: {fileID: 360586290}
+  InkyScatterTarget: {fileID: 1597444476}
 --- !u!1 &736531784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,37 +1665,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.5, y: -1.62, z: 12.81}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &905101683
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 905101684}
-  m_Layer: 0
-  m_Name: ScatterPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &905101684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905101683}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.59, y: 0, z: 13.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3016,7 +3063,6 @@ SceneRoots:
   - {fileID: 72587883}
   - {fileID: 1699870379}
   - {fileID: 2079949756}
-  - {fileID: 905101684}
   - {fileID: 310877813}
   - {fileID: 491830024}
   - {fileID: 2070685241}
