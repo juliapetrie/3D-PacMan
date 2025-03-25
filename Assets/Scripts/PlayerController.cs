@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -102,11 +101,11 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         bool leftHit = Physics.Raycast(leftEdge, desiredDirection, out hit, distance);
         bool rightHit = Physics.Raycast(rightEdge, desiredDirection, out hit, distance);
-        bool centerHit = Physics.Raycast(rb.position, desiredDirection, out hit, distance);
 
-        if (leftHit || rightHit || centerHit)
+        if (leftHit || rightHit)
         {
             //obstacle
+            Debug.Log("Obstacle detected");
             Vector3 movement = initialVelocity * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + movement);
         }

@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
-public class powerupCollection : MonoBehaviour
+public class itemCollection : MonoBehaviour
 {
     public float sprintDuration = 2f;
     public float pelletDuration = 8f;
+    public UnityEvent OnPelletCollected = new();
     [SerializeField] private PlayerController playerController;
 
     private void Start()
@@ -14,14 +16,27 @@ public class powerupCollection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.tag == "Fruit")
+
+        //disable the collider to avoid duplicate collisions
+        Collider collider = other.GetComponent<Collider>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
+
+        if (other.transform.tag == "Pellet")
+        {
+            Debug.Log("pellet collected");
+            Destroy(other.gameObject);
+            OnPelletCollected?.Invoke();
+        }
+        else if (other.transform.tag == "Fruit")
         {
             Debug.Log("fruit collected");
             Destroy(other.gameObject);
             StartCoroutine(GiveSprintPowerup());
         }
-
-        else if(other.transform.tag == "PowerPellet")
+        else if (other.transform.tag == "PowerPellet")
         {
             Debug.Log("power pellet collected");
             Destroy(other.gameObject);
@@ -48,4 +63,5 @@ public class powerupCollection : MonoBehaviour
             playerController.hasSprintPowerup = false;
         }
     }
+
 }
