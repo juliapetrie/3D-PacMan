@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int lives = 3;
+    // [SerializeField] private int lives = 3;
     // // [SerializeField] private float score = 0;
     // [SerializeField] private InputManager inputManager;
     // [SerializeField] private GameObject itemCollection;
