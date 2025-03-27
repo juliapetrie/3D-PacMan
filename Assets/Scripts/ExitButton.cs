@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ExitButton : MonoBehaviour
 {
-    [SerializeField] private string menuScene = "MainMenu"; //update in inspector as we change these 
+    [SerializeField] private string menuScene = "StartMenu - Julia"; //update in inspector as we change these 
 
     public void ExitToMenu()
     {
