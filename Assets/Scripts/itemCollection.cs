@@ -8,6 +8,7 @@ public class itemCollection : MonoBehaviour
     public float pelletDuration = 8f;
     public UnityEvent OnPelletCollected = new();
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private PelletCounterUI pelletCounterUI;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class itemCollection : MonoBehaviour
             Debug.Log("pellet collected");
             Destroy(other.gameObject);
             OnPelletCollected?.Invoke();
+            pelletCounterUI?.UpdateScore(); // Update score
         }
         else if (other.transform.tag == "Fruit")
         {

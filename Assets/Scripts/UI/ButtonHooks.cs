@@ -7,8 +7,8 @@ public class ButtonHooks : MonoBehaviour
         SceneHandler.Instance.LoadNextScene();
     }
 
-    public void ExitToMenu()
-    {
-        SceneHandler.Instance.LoadMenuScene();
-    }
+    // public void ExitToMenu()
+    // {
+    //     SceneHandler.Instance.LoadMenuScene();
+    // }
 }
