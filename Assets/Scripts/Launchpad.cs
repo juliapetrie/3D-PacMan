@@ -8,9 +8,11 @@ public class Launchpad : MonoBehaviour
   
     private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("triggered");
+        Debug.Log(other.transform.tag);
         if (other.transform.tag == "Pacman")
         {
+            Debug.Log("launch");
             Rigidbody rb = other.GetComponent<Rigidbody>();
             PlayerController playerController = other.GetComponent<PlayerController>();
 
