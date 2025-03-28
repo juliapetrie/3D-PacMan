@@ -13,7 +13,7 @@ public class GhostController : MonoBehaviour
     public Transform pacman;
     public Transform bottomLeftCorner;
     private NavMeshAgent agent;
-    private float distanceThreshold = 8f;
+    private float distanceThreshold = 2f;
 
     private bool isReturningHome;
 
@@ -28,9 +28,9 @@ public class GhostController : MonoBehaviour
 
     private bool isFrightened = false;
     private float frightenedTime = 0f;
-    public float frightenedSpeed = 3f;
+    public float frightenedSpeed = 4f;
     private float eatenSpeed = 5f;
-    private float normalSpeed = 2;
+    private float normalSpeed = 3f;
 
     private bool isInScatterMode = true;
     private float stateTimer = 0f;
@@ -41,6 +41,11 @@ public class GhostController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         stateTimer = scatterTime;
+        if (agent == null)
+        {
+            Debug.LogError("NavMeshAgent not found on " + gameObject.name);
+            return;
+        }
     }
 
     void Update()
@@ -135,6 +140,19 @@ public class GhostController : MonoBehaviour
         if (agent.name == "Blinky")
         {
             agent.SetDestination(BlinkyScatterTarget.position);
+            Debug.Log("Blinky is in scatter mode");
+        }
+        if (agent.name == "Blinky")
+        {
+            if (agent.isActiveAndEnabled && agent.isOnNavMesh && agent.CalculatePath(BlinkyScatterTarget.position, new NavMeshPath()))
+            {
+                agent.SetDestination(BlinkyScatterTarget.position);
+                Debug.Log("Blinky is in scatter mode");
+            }
+            else
+            {
+                Debug.LogWarning("No valid path found for Blinky to Scatter Target.");
+            }
         }
         if (agent.name == "Pinky")
         {
@@ -142,7 +160,16 @@ public class GhostController : MonoBehaviour
         }
         if (agent.name == "Inky")
         {
-            agent.SetDestination(InkyScatterTarget.position);
+            if (agent.isActiveAndEnabled && agent.isOnNavMesh && agent.CalculatePath(InkyScatterTarget.position, new NavMeshPath()))
+            {
+                agent.SetDestination(InkyScatterTarget.position);
+                Debug.Log("inky is in scatter mode");
+            }
+            else
+            {
+                Debug.LogWarning("No valid path found for inky to Scatter Target.");
+            }
+            
         }
     }
     public void StartFrightenedState(float duration)
@@ -174,7 +201,9 @@ public class GhostController : MonoBehaviour
         }
         if (agent.name == "Blinky")
         {
+
             BlinkyChase();
+
         }
         if (agent.name == "Pinky")
         {
@@ -188,7 +217,7 @@ public class GhostController : MonoBehaviour
 
     void PinkyChase()
     {
-        Vector3 pinkyTarget = pacman.position + (pacman.forward * 10);
+        Vector3 pinkyTarget = pacman.position + (pacman.forward * 4);
         agent.SetDestination(pinkyTarget);
 
     }
@@ -202,9 +231,14 @@ public class GhostController : MonoBehaviour
         agent.SetDestination(inkyTarget);
     }
 
+   
+
     void BlinkyChase()
     {
         agent.SetDestination(pacman.position);
+        Debug.Log("Blinky is in chase mode");
+
+
     }
 
     void ClydeChase()
@@ -222,5 +256,7 @@ public class GhostController : MonoBehaviour
             agent.SetDestination(pacman.position);
         }
     }
+
+
 
 }
