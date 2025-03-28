@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private bool levelCompleted = false;
 
 //update if/when level names change
-     private string level1Name = "Level 1"; // use current scene for testing update as needed
+     private string level1Name = "Level 1 NavMesh"; // use current scene for testing update as needed
     private string level2Name = "Level 2";
     private string level3Name = "Level 3"; 
     private string mainMenuScene = "StartMenu - Julia"; 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         itemCollector = FindFirstObjectByType<itemCollection>();
         if (itemCollector != null)
         {
-            itemCollector.OnPelletCollected.AddListener(CheckPellets);
+           // itemCollector.OnPelletCollected.AddListener(CheckPellets);
         }
          if (levelCompleteText != null)
             levelCompleteText.gameObject.SetActive(false); //hide level text when not complete
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        CheckPellets(); // check if level complete
+       // CheckPellets(); // check if level complete
     }
 
 /*
