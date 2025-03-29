@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private bool levelCompleted = false;
 
 //update if/when level names change
-     private string level1Name = "Level 2 NavMesh"; // use current scene for testing update as needed
+     private string level1Name = "Level 3 NavMesh"; // use current scene for testing update as needed
     private string level2Name = "Level 2";
     private string level3Name = "Level 3"; 
     private string mainMenuScene = "StartMenu - Julia"; 
