@@ -72,10 +72,18 @@ public class GhostController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isFrightened && other.CompareTag("Pacman"))
+        if (other.CompareTag("Pacman"))
         {
-            Debug.Log("Pac-Man caught the ghost!");
-            returnHome();
+            if (isFrightened)
+            {
+                Debug.Log("Pac-Man caught the ghost!");
+                returnHome();
+            }
+            else
+            {
+                Debug.Log("Pacman was caught");
+            }
+
         }
     }
 
