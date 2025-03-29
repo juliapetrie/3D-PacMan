@@ -359,10 +359,17 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 905087827}
+    - target: {fileID: 8830762423048117865, guid: eb3866dfac27ccd4d97b05b96c7addae, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2171455392226073096, guid: eb3866dfac27ccd4d97b05b96c7addae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1180220122}
   m_SourcePrefab: {fileID: 100100000, guid: eb3866dfac27ccd4d97b05b96c7addae, type: 3}
 --- !u!4 &287042404 stripped
 Transform:
@@ -872,6 +879,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7205875687909927481, guid: c73e436044f44544eb11b937d0054544, type: 3}
   m_PrefabInstance: {fileID: 635411964079520959}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1180220118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2171455392226073096, guid: eb3866dfac27ccd4d97b05b96c7addae, type: 3}
+  m_PrefabInstance: {fileID: 287042403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1180220122
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180220118}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1340991410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1396,6 +1424,10 @@ PrefabInstance:
       propertyPath: PinkyScatterTarget
       value: 
       objectReference: {fileID: 7871143191760760640}
+    - target: {fileID: 1285334886090291974, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2510907714928387638, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
       propertyPath: m_Speed
       value: 2
@@ -1403,6 +1435,10 @@ PrefabInstance:
     - target: {fileID: 2510907714928387638, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599674714946012465, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2604325368784857246, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
       propertyPath: pacman
@@ -1439,6 +1475,10 @@ PrefabInstance:
     - target: {fileID: 4210521041158228066, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212580915598508036, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5269142816915380713, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
       propertyPath: m_Radius
@@ -1544,9 +1584,17 @@ PrefabInstance:
       propertyPath: BlinkyScatterTarget
       value: 
       objectReference: {fileID: 5386477925573701144}
+    - target: {fileID: 8002813412659520830, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8139805460262573737, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
       propertyPath: m_Name
       value: Ghosts
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139805460262573737, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1128428343131535573, guid: 3d41706b9df91b246b766b721f02e0e4, type: 3}
