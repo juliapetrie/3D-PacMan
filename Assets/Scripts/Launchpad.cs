@@ -10,8 +10,6 @@ public class Launchpad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-
         if (other.CompareTag("Pacman"))
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
