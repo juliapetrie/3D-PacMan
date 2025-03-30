@@ -499,22 +499,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5591787054583317009, guid: c985fb274558e754caddd8f97f830421, type: 3}
-      propertyPath: m_text
-      value: 'Move: Use Arrow Keys or WASD
-
-
-        Goal: Eat all the pellets to
-        clear the level
-
-
-        Avoid: Stay away from ghosts they''ll end your
-        game!
-
-
-        Fruit: Temporarily turn the tables eat green fruit to chase
-        down ghosts!'
-      objectReference: {fileID: 0}
     - target: {fileID: 7066406735493006930, guid: c985fb274558e754caddd8f97f830421, type: 3}
       propertyPath: player
       value: 
@@ -1234,7 +1218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1493316461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2038,6 +2022,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2280513816166015795, guid: 9fe4502e7e6213044b7efef3f5b5e23f, type: 3}
   m_PrefabInstance: {fileID: 3111354531812183393}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6989126117553899288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 24.193642
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.473745
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.77585405
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.63091254
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 78.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221193097015862564, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452251113185625642, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: m_Name
+      value: PacmanCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870229800705671934, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 287042404}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05a5ff58bbb739f40941e418ba109212, type: 3}
 --- !u!1001 &7369836689117774311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2164,6 +2209,7 @@ SceneRoots:
   - {fileID: 623335856}
   - {fileID: 1124834346}
   - {fileID: 1493316464}
+  - {fileID: 6989126117553899288}
   - {fileID: 1769072496}
   - {fileID: 8926773728290706987}
   - {fileID: 1353271118}
