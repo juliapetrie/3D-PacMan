@@ -9,7 +9,7 @@ public class LevelTextUpdater : MonoBehaviour
 
     private readonly Dictionary<string, int> sceneLevelMapping = new Dictionary<string, int>
     {
-        { "Level 1", 1 },
+        { "Merged Level 1 V1", 1 },
         { "Level 2", 2 },
         { "Level 3", 3 }
     };

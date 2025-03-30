@@ -10,6 +10,7 @@ TagManager:
   - PacmanHitbox
   - PowerPellet
   - Pellet
+  - Ghost
   layers:
   - Default
   - TransparentFX

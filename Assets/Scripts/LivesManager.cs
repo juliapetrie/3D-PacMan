@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LivesUpdater : MonoBehaviour
+public class LivesManager : MonoBehaviour
 {
     [SerializeField] private GameObject threeLivesIcon;
     [SerializeField] private GameObject twoLivesIcon;
     [SerializeField] private GameObject oneLifeIcon;
-    [SerializeField] private string level1Name = "Level 1"; //update if we change Level 1 scene to different name
+    [SerializeField] private string level1Name = "Merged Level 1 V1"; //update if we change Level 1 scene to different name
 
     private int lives = 3;
 
@@ -24,24 +24,25 @@ public class LivesUpdater : MonoBehaviour
         }
     }
 
-    private void LoseLife()
+ public void LoseLife()
+{
+    if (lives <= 0) return;
+
+    lives--;
+
+    Debug.Log($"lives: {lives}");
+
+    UpdateLivesUI();
+
+    if (lives <= 0)
     {
-        if (lives <= 0) return; 
+        Debug.Log("dead");
 
-        lives--;
-
-        Debug.Log($"lives: {lives}");
-
-        if (lives <= 0)
-        {
-            Debug.Log("dead");
-            SceneManager.LoadScene(level1Name);
-        }
-        else
-        {
-            UpdateLivesUI();
-        }
+        FindFirstObjectByType<GameManager>()?.TriggerGameOver();
     }
+}
+
+
 
     private void UpdateLivesUI()
     {

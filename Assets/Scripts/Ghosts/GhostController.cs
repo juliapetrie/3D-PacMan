@@ -24,6 +24,8 @@ public class GhostController : MonoBehaviour
 
     [SerializeField] private Transform homePosition;
     [SerializeField] private float respawnTime = 5f;
+    [SerializeField] private LivesManager livesManager;
+
 
 
     private bool isFrightened = false;
@@ -82,6 +84,7 @@ public class GhostController : MonoBehaviour
             else
             {
                 Debug.Log("Pacman was caught");
+                 livesManager.LoseLife();
             }
 
         }

@@ -53,7 +53,7 @@ public class CountdownController : MonoBehaviour
 
         Debug.Log("Countdown finished");
     }
-private void DisableGameplay()
+public void DisableGameplay()
 {
     if (player != null)
     {

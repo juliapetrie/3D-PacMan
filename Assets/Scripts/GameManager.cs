@@ -14,12 +14,20 @@ public class GameManager : MonoBehaviour
      [SerializeField] private GameObject  levelCompleteText; 
     [SerializeField] private GameObject  gameCompleteText; 
 
+    [SerializeField] private GameObject  LevelFailText; 
+    [SerializeField] private CountdownController countdownController; //to access pause method
+
+   
+
+
     private itemCollection itemCollector;
 
     private bool levelCompleted = false;
+    private bool gameOverTriggered = false;
 
-//update if/when level names change
-     private string level1Name = "Level 3 NavMesh"; // use current scene for testing update as needed
+
+//update when level names change
+     private string level1Name = "Merged Level 1 V1"; // use current scene for testing update as needed
     private string level2Name = "Level 2";
     private string level3Name = "Level 3"; 
     private string mainMenuScene = "StartMenu - Julia"; 
@@ -29,7 +37,7 @@ public class GameManager : MonoBehaviour
         itemCollector = FindFirstObjectByType<itemCollection>();
         if (itemCollector != null)
         {
-           // itemCollector.OnPelletCollected.AddListener(CheckPellets);
+           itemCollector.OnPelletCollected.AddListener(CheckPellets);
         }
          if (levelCompleteText != null)
             levelCompleteText.gameObject.SetActive(false); //hide level text when not complete
@@ -40,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-       // CheckPellets(); // check if level complete
+       CheckPellets(); // check if level complete
     }
 
 /*
@@ -82,7 +90,7 @@ private IEnumerator HandleLevelComplete(string currentScene)
         levelCompleteText.SetActive(true);
     }
 
-    yield return new WaitForSeconds(5f); // Delay for message read
+    yield return new WaitForSeconds(3f); // Delay for message read
 
     if (levelCompleteText != null)
     {
@@ -103,7 +111,7 @@ private IEnumerator HandleGameComplete()
         gameCompleteText.SetActive(true); 
     }
 
-    yield return new WaitForSeconds(5f); // Delay for message read
+    yield return new WaitForSeconds(3f); // Delay for message read
 
     if (gameCompleteText != null)
     {
@@ -133,11 +141,36 @@ private IEnumerator HandleGameComplete()
         }
     }
 
+     public void TriggerGameOver()
+    {
+        if (!gameOverTriggered)
+        {
+            gameOverTriggered = true;
+            StartCoroutine(HandleGameOver());
+        }
+    }
 
-    // private void IncrementScore()
-    // {
-    //     score++;
-    //     Debug.Log($"Score: {score}");
-    //     //scoreText.text = $"Coins: {score}";
-    // }
+    private IEnumerator HandleGameOver()
+{
+    Debug.Log("Game Over");
+
+    if (countdownController != null) //pause gameplay when lives lost
+    {
+        countdownController.DisableGameplay();
+    }
+
+    if (LevelFailText != null)
+    {
+        LevelFailText.SetActive(true);
+    }
+
+    yield return new WaitForSeconds(3f);
+
+    if (LevelFailText != null)
+    {
+        LevelFailText.SetActive(false);
+    }
+    SceneManager.LoadScene(level1Name); //reload level 1
+}
+
 }
