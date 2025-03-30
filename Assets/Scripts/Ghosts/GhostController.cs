@@ -98,6 +98,7 @@ public class GhostController : MonoBehaviour
     if (isFrightened)
     {
         Debug.Log("Pac-Man ate ghost!");
+        AudioManager.Instance.PlayGhostEatenSound();
         returnHome();
     }
     else if (playerController != null)
@@ -109,6 +110,7 @@ public class GhostController : MonoBehaviour
         }
 
         Debug.Log($"{gameObject.name} caught Pac-Man life -1");
+         AudioManager.Instance.PlayLoseLifeSound();
         livesManager.LoseLife();
     }
 }
