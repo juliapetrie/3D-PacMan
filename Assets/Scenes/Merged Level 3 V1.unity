@@ -1198,6 +1198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1729629319810671522, guid: c985fb274558e754caddd8f97f830421, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2947396380990643622, guid: c985fb274558e754caddd8f97f830421, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1298,6 +1302,10 @@ PrefabInstance:
       propertyPath: 'ghosts.Array.data[3]'
       value: 
       objectReference: {fileID: 1591358301}
+    - target: {fileID: 7821330397747825561, guid: c985fb274558e754caddd8f97f830421, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.062195
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
