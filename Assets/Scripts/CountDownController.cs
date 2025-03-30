@@ -11,6 +11,9 @@ public class CountdownController : MonoBehaviour
     [SerializeField] private float countdownDuration; 
      [SerializeField] private GameObject player; //setup to pacman in the inspector
      [SerializeField] private GameObject[] ghosts; // setup to ghosts in inspector
+     [SerializeField] private GameObject pauseButton; //setup 
+    [SerializeField] private GameObject playButton;//setup
+
 
     private bool isLevel1;
     
@@ -55,12 +58,17 @@ public class CountdownController : MonoBehaviour
     }
 public void DisableGameplay()
 {
-    if (player != null)
+     if (player != null)
     {
-        player.SetActive(false); // player disabled
+        // pause pacman
+        var controller = player.GetComponent<PlayerController>();
+        if (controller != null)
+        {
+            controller.enabled = false;
+        }
+
         Debug.Log("player paused");
     }
-
     if (ghosts != null)
     {
         foreach (GameObject ghost in ghosts)
@@ -78,13 +86,29 @@ public void DisableGameplay()
     }
 }
 
-private void EnableGameplay()
+public void PauseGameUI()
 {
-    if (player != null)
+    DisableGameplay();
+
+    if (pauseButton != null) pauseButton.SetActive(false);
+    if (playButton != null) playButton.SetActive(true);
+}
+
+
+public void EnableGameplay()
+{
+//play pacman
+     if (player != null)
     {
-        player.SetActive(true); //player un-paused
+        var controller = player.GetComponent<PlayerController>();
+        if (controller != null)
+        {
+            controller.enabled = true;
+        }
+
         Debug.Log("player active");
     }
+
 
     if (ghosts != null)
     {
@@ -102,6 +126,14 @@ private void EnableGameplay()
         Debug.Log("ghosts active");
     }
 }
+public void ResumeGameUI()
+{
+    EnableGameplay();
+
+    if (pauseButton != null) pauseButton.SetActive(true);
+    if (playButton != null) playButton.SetActive(false);
+}
+
 
 
 
