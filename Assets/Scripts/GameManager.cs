@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
 
 //update when level names change
      private string level1Name = "Merged Level 1 V1"; // use current scene for testing update as needed
-    private string level2Name = "Level 2";
-    private string level3Name = "Level 3"; 
+    private string level2Name = "Merged Level 2 V1";
+    private string level3Name = "Merged Level 3 V1"; 
     private string mainMenuScene = "StartMenu - Julia"; 
 
     private void Awake()
@@ -105,6 +105,10 @@ these are for game finish messages aka after level 3 is done
 */
 private IEnumerator HandleGameComplete()
 {
+     if (countdownController != null) //pause gameplay 
+    {
+        countdownController.DisableGameplay();
+    }
     if (gameCompleteText != null)
     {
         Debug.Log("game complete");
@@ -124,6 +128,10 @@ private IEnumerator HandleGameComplete()
 
     private void LoadNextLevel(string currentScene)
     {
+         if (countdownController != null) //pause gameplay 
+    {
+        countdownController.DisableGameplay();
+    }
         string nextLevel = "";
 
         if (currentScene == level1Name)
@@ -154,7 +162,7 @@ private IEnumerator HandleGameComplete()
 {
     Debug.Log("Game Over");
 
-    if (countdownController != null) //pause gameplay when lives lost
+    if (countdownController != null) //pause gameplay when dead
     {
         countdownController.DisableGameplay();
     }

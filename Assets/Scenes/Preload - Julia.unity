@@ -317,9 +317,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - Level 1
-  - Level 2
-  - Level 3
+  - Merged Level 1 V1
+  - Merged Level 2 V1
+  - Merged Level 3 V1
   menuScene: StartMenu - Julia
   animationType: 0
   animationDuration: 0

@@ -15,7 +15,7 @@ public class TutorialPanelController : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
 
-        if (currentSceneName == "Level 1")
+        if (currentSceneName == "Merged Level 1 V1")
         {
             Debug.Log("tutorial panel only for level1");
             tutorialPanel.SetActive(true);

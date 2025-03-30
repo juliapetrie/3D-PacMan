@@ -6,7 +6,7 @@ public class LivesManager : MonoBehaviour
     [SerializeField] private GameObject threeLivesIcon;
     [SerializeField] private GameObject twoLivesIcon;
     [SerializeField] private GameObject oneLifeIcon;
-    [SerializeField] private string level1Name = "Merged Level 1 V1"; //update if we change Level 1 scene to different name
+    // [SerializeField] private string level1Name = "Merged Level 1 V1"; //update if we change Level 1 scene to different name
 
     private int lives = 3;
 
