@@ -1,30 +1,34 @@
+using System.Collections;
 using UnityEngine;
 
 public class Launchpad : MonoBehaviour
-{    
-
+{
     [SerializeField] public Transform launchDestination;
     [SerializeField] public float launchHeight = 5f;
-  
+    [SerializeField] public float cooldownTime = 2f;
+
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("triggered");
-        Debug.Log(other.transform.tag);
-        if (other.transform.tag == "Pacman")
+
+
+        if (other.CompareTag("Pacman"))
         {
-            Debug.Log("launch");
             Rigidbody rb = other.GetComponent<Rigidbody>();
             PlayerController playerController = other.GetComponent<PlayerController>();
-
+            Debug.Log("triggered");
             if (rb != null && playerController != null)
             {
+                Debug.Log("launched");
                 playerController.DisableMovement();
 
                 Vector3 launchVelocity = CalculateLaunchVelocity(other.transform.position, launchDestination.position, launchHeight);
                 rb.linearVelocity = Vector3.zero;
                 rb.AddForce(launchVelocity, ForceMode.VelocityChange);
 
-                playerController.Invoke("EnableMovement", Mathf.Abs(2 * launchVelocity.y / Physics.gravity.y));
+                float totalTime = GetTotalFlightTime(launchVelocity.y);
+                playerController.Invoke("EnableMovement", totalTime);
+
             }
         }
     }
@@ -33,24 +37,27 @@ public class Launchpad : MonoBehaviour
     private Vector3 CalculateLaunchVelocity(Vector3 start, Vector3 target, float height)
     {
         float gravity = Mathf.Abs(Physics.gravity.y);
-
-        //calculate the distance between the two points
         Vector3 displacement = target - start;
         Vector3 horizontalDisplacement = new Vector3(displacement.x, 0, displacement.z);
         float horizontalDistance = horizontalDisplacement.magnitude;
         float verticalDistance = displacement.y;
 
-        //apply equation to calculate time
-        float timeToPeak = Mathf.Sqrt(2 * height / gravity);
-        float timeFromPeakToTarget = Mathf.Sqrt(2 * (height - verticalDistance) / gravity);
-        float totalTime = timeToPeak + timeFromPeakToTarget;
-
-        //find the velocity required
-        float horizontalVelocity = horizontalDistance / totalTime;
         float verticalVelocity = Mathf.Sqrt(2 * gravity * height);
 
-        //return the velocity as a vector
+        float timeToPeak = verticalVelocity / gravity;
+        float timeToFall = Mathf.Sqrt(2 * Mathf.Max(height - verticalDistance, 0) / gravity);
+        float totalTime = timeToPeak + timeToFall;
+
+        float horizontalVelocity = horizontalDistance / totalTime;
+
         Vector3 launchVelocity = horizontalDisplacement.normalized * horizontalVelocity + Vector3.up * verticalVelocity;
         return launchVelocity;
     }
+
+    private float GetTotalFlightTime(float verticalVelocity)
+    {
+        float gravity = Mathf.Abs(Physics.gravity.y);
+        return (2 * verticalVelocity / gravity);
+    }
+
 }
