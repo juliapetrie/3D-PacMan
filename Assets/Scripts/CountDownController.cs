@@ -10,14 +10,14 @@ public class CountdownController : MonoBehaviour
     [SerializeField] private GameObject countdownPanel; 
     [SerializeField] private float countdownDuration; 
      [SerializeField] private GameObject player; //setup to pacman in the inspector
-     [SerializeField] private GameObject[] ghosts; // setup to ghost parent obj in inspector
+     [SerializeField] private GameObject[] ghosts; // setup to ghosts in inspector
 
     private bool isLevel1;
     
     private void Start()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        isLevel1 = (currentScene == "Level 1"); 
+        isLevel1 = (currentScene == "Merged Level 1 V1"); 
          DisableGameplay();
 
         if (!isLevel1) // if not level 1 start countdown immediatly
@@ -53,7 +53,7 @@ public class CountdownController : MonoBehaviour
 
         Debug.Log("Countdown finished");
     }
-private void DisableGameplay()
+public void DisableGameplay()
 {
     if (player != null)
     {

@@ -1,46 +1,70 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LivesUpdater : MonoBehaviour
+public class LivesManager : MonoBehaviour
 {
     [SerializeField] private GameObject threeLivesIcon;
     [SerializeField] private GameObject twoLivesIcon;
     [SerializeField] private GameObject oneLifeIcon;
-    [SerializeField] private string level1Name = "Level 1"; //update if we change Level 1 scene to different name
 
-    private int lives = 3;
+    private int lives;
 
     private void Start()
     {
-        lives = 3; 
+        lives = 3;
         UpdateLivesUI();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ghost")) // ensure ghosts are all tagged
+        if (other.CompareTag("Ghost")) 
         {
             LoseLife();
         }
     }
 
-    private void LoseLife()
+    public void LoseLife()
     {
-        if (lives <= 0) return; 
+        if (lives <= 0) return;
 
         lives--;
 
         Debug.Log($"lives: {lives}");
+        UpdateLivesUI();
 
         if (lives <= 0)
         {
             Debug.Log("dead");
-            SceneManager.LoadScene(level1Name);
+            FindFirstObjectByType<GameManager>()?.TriggerGameOver();
         }
         else
         {
-            UpdateLivesUI();
+            GameObject pacman = GameObject.FindGameObjectWithTag("Pacman"); //cooldown delay to give chance to escape
+            if (pacman != null)
+            {
+                PlayerController playerController = pacman.GetComponent<PlayerController>();
+                PacmanFlashingEffect flash = pacman.GetComponent<PacmanFlashingEffect>();
+
+                if (playerController != null)
+                    playerController.hasPelletPowerup = true;
+
+                if (flash != null)
+                    flash.StartFlashing(1.5f); // 1.5 second of invincibility
+
+                StartCoroutine(ResetInvincibility(pacman, 1.5f));
+            }
         }
+    }
+
+    private System.Collections.IEnumerator ResetInvincibility(GameObject pacman, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        PlayerController playerController = pacman.GetComponent<PlayerController>();
+        if (playerController != null)
+            playerController.hasPelletPowerup = false;
+
+        Debug.Log("reset to normal powers");
     }
 
     private void UpdateLivesUI()

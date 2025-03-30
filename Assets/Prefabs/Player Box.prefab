@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1895678381544977122}
   - component: {fileID: 4350796806441925149}
   - component: {fileID: 2191532088839162234}
-  m_Layer: 0
+  - component: {fileID: 1462079833204492954}
+  m_Layer: 6
   m_Name: Player Box
   m_TagString: Pacman
   m_Icon: {fileID: 0}
@@ -30,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.97, y: 0.97, z: 0.97}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4578317393943745556}
   m_Father: {fileID: 0}
@@ -95,7 +96,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprintDuration: 2
   pelletDuration: 10
-  playerController: {fileID: 0}
+  OnPelletCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  playerController: {fileID: 1895678381544977122}
+  pelletCounterUI: {fileID: 0}
 --- !u!65 &2191532088839162234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,8 +120,22 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.01, y: 1.01, z: 1.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1462079833204492954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033219286846513070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a04df73ef200f469306a8963f4b4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pacmanRenderer: {fileID: 2816112134428390482}
+  flashInterval: 0.2
 --- !u!1 &2171455392226073096
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +147,8 @@ GameObject:
   - component: {fileID: 1105056373655692717}
   - component: {fileID: 5392719149098510262}
   - component: {fileID: 2816112134428390482}
-  m_Layer: 0
+  - component: {fileID: 4182948609823029394}
+  m_Layer: 6
   m_Name: Pacman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6e8d835f66d8ca4479ae3d3536581224, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -203,6 +223,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &4182948609823029394
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171455392226073096}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2558923814072876183
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4578317393943745556}
   - component: {fileID: 1461154737100733222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hitbox
   m_TagString: PacmanHitbox
   m_Icon: {fileID: 0}
