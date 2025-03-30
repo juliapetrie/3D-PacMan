@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sprintSpeed = 10f;
     [SerializeField] private float pelletSpeed = 7f;
 
+
     private Rigidbody rb;
     public bool hasSprintPowerup = false;
     public bool hasPelletPowerup = false;

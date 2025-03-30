@@ -72,46 +72,46 @@ public class GhostController : MonoBehaviour
         }
     }
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Pacman"))
-    //     {
-    //         if (isFrightened)
-    //         {
-    //             Debug.Log("Pac-Man caught the ghost!");
-    //             returnHome();
-    //         }
-    //         else
-    //         {
-    //             Debug.Log("Pacman was caught");
-    //              livesManager.LoseLife();
-    //         }
-
-    //     }
-    // }
     private void OnTriggerEnter(Collider other)
-{
-    if (!other.CompareTag("Pacman")) return;
-
-    PlayerController playerController = other.GetComponent<PlayerController>();
-
-    if (isFrightened)
     {
-        Debug.Log("Pac-Man ate ghost!");
-        returnHome();
-    }
-    else if (playerController != null)
-    {
-        if (playerController.hasPelletPowerup)
+        if (other.CompareTag("Pacman"))
         {
-            Debug.Log("pacman invincible");
-            return; 
-        }
+            if (isFrightened)
+            {
+                Debug.Log("Pac-Man caught the ghost!");
+                returnHome();
+            }
+            else
+            {
+                Debug.Log("Pacman was caught");
+                livesManager.LoseLife();
+            }
 
-        Debug.Log($"{gameObject.name} caught Pac-Man life -1");
-        livesManager.LoseLife();
+        }
     }
-}
+//    private void OnTriggerEnter(Collider other)
+//{
+//    if (!other.CompareTag("Pacman")) return;
+
+//    PlayerController playerController = other.GetComponent<PlayerController>();
+
+//    if (isFrightened)
+//    {
+//        Debug.Log("Pac-Man ate ghost!");
+//        returnHome();
+//    }
+//    else if (playerController != null)
+//    {
+//        if (playerController.hasPelletPowerup)
+//        {
+//            Debug.Log("pacman invincible");
+//            return; 
+//        }
+
+//        Debug.Log($"{gameObject.name} caught Pac-Man life -1");
+//        livesManager.LoseLife();
+//    }
+//}
 
 
 
