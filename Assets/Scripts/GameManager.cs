@@ -87,6 +87,7 @@ private IEnumerator HandleLevelComplete(string currentScene)
     if (levelCompleteText != null)
     {
         Debug.Log("Level complete");
+         AudioManager.Instance.PlayWinSound();
         levelCompleteText.SetActive(true);
     }
 
@@ -112,6 +113,7 @@ private IEnumerator HandleGameComplete()
     if (gameCompleteText != null)
     {
         Debug.Log("game complete");
+         AudioManager.Instance.PlayWinSound();
         gameCompleteText.SetActive(true); 
     }
 
@@ -161,6 +163,7 @@ private IEnumerator HandleGameComplete()
     private IEnumerator HandleGameOver()
 {
     Debug.Log("Game Over");
+      AudioManager.Instance.PlayLoseLifeSound();
 
     if (countdownController != null) //pause gameplay when dead
     {

@@ -121,6 +121,7 @@ public class itemCollection : MonoBehaviour
         if (other.CompareTag("Pellet"))
         {
             Debug.Log("pellet collected");
+            AudioManager.Instance.PlayPelletSound();
             Destroy(other.gameObject);
             OnPelletCollected?.Invoke();
             pelletCounterUI?.UpdateScore();
@@ -128,12 +129,14 @@ public class itemCollection : MonoBehaviour
         else if (other.CompareTag("Fruit"))
         {
             Debug.Log("fruit collected");
+            AudioManager.Instance.PlaySpeedupSound();
             Destroy(other.gameObject);
             StartCoroutine(GiveSprintPowerup());
         }
         else if (other.CompareTag("PowerPellet"))
         {
             Debug.Log("power pellet collected");
+            AudioManager.Instance.PlaySpeedupSound(); 
             Destroy(other.gameObject);
             StartCoroutine(GivePelletPowerup());
         }
