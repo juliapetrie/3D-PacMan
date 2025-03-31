@@ -72,48 +72,72 @@ public class GhostController : MonoBehaviour
         }
     }
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Pacman"))
-    //     {
-    //         if (isFrightened)
-    //         {
-    //             Debug.Log("Pac-Man caught the ghost!");
-    //             returnHome();
-    //         }
-    //         else
-    //         {
-    //             Debug.Log("Pacman was caught");
-    //              livesManager.LoseLife();
-    //         }
-
-    //     }
-    // }
     private void OnTriggerEnter(Collider other)
-{
-    if (!other.CompareTag("Pacman")) return;
-
-    PlayerController playerController = other.GetComponent<PlayerController>();
-
-    if (isFrightened)
     {
-        Debug.Log("Pac-Man ate ghost!");
-        AudioManager.Instance.PlayGhostEatenSound();
-        returnHome();
-    }
-    else if (playerController != null)
-    {
-        if (playerController.hasPelletPowerup)
+        if (other.CompareTag("Pacman"))
         {
-            Debug.Log("pacman invincible");
-            return; 
+            if (isFrightened)
+            {
+                Debug.Log("Pac-Man caught the ghost!");
+                AudioManager.Instance.PlayGhostEatenSound();
+                returnHome();
+            }
+            else
+            {
+                Debug.Log("Pacman was caught");
+                AudioManager.Instance.PlayLoseLifeSound();
+                livesManager.LoseLife();
+
+                if (GhostManager.Instance.countDownController != null)
+                {
+                    GhostManager.Instance.countDownController.DisableGameplay();
+                    StartCoroutine(GameReset());
+                }
+                else
+                {
+                    Debug.LogError("CountDownController not assigned!");
+                }
+            }
         }
 
-        Debug.Log($"{gameObject.name} caught Pac-Man life -1");
-         AudioManager.Instance.PlayLoseLifeSound();
-        livesManager.LoseLife();
     }
-}
+    private IEnumerator GameReset()
+    {
+        Debug.Log("Game paused for reset...");
+        yield return new WaitForSeconds(2f);
+
+        // Reset Pac-Man's Position
+        pacman.transform.position = GhostManager.Instance.pacmanstart.position;
+        GhostManager.Instance.pacman.ResetMovement();
+        GhostManager.Instance.countDownController.EnableGameplay();
+   
+        Debug.Log("Game resumed.");
+    }
+
+
+    //    private void OnTriggerEnter(Collider other)
+    //{
+    //    if (!other.CompareTag("Pacman")) return;
+
+    //    PlayerController playerController = other.GetComponent<PlayerController>();
+
+    //    if (isFrightened)
+    //    {
+    //        Debug.Log("Pac-Man ate ghost!");
+    //        returnHome();
+    //    }
+    //    else if (playerController != null)
+    //    {
+    //        if (playerController.hasPelletPowerup)
+    //        {
+    //            Debug.Log("pacman invincible");
+    //            return; 
+    //        }
+
+    //        Debug.Log($"{gameObject.name} caught Pac-Man life -1");
+    //        livesManager.LoseLife();
+    //    }
+    //}
 
 
 
@@ -217,11 +241,46 @@ public class GhostController : MonoBehaviour
         Debug.Log("Ghost is now frightened for " + duration + " seconds!");
     }
 
+    //void RunAwayFromPacMan()
+    //{
+    //    Vector3 directionAwayFromPacMan = transform.position - pacman.position;
+    //    agent.SetDestination(transform.position + directionAwayFromPacMan);
+    //}
+    //void RunAwayFromPacMan()
+    //{
+    //    Vector3 directionAwayFromPacMan = transform.position - pacman.position;
+    //    Vector3 targetPosition = transform.position + directionAwayFromPacMan.normalized * 5f; // Adjust 5f as needed for distance
+
+    //    // Ensure the position is on the NavMesh
+    //    NavMeshHit hit;
+    //    if (NavMesh.SamplePosition(targetPosition, out hit, 5.0f, NavMesh.AllAreas))
+    //    {
+    //        Debug.Log("ghost running away from pacman idk");
+    //        agent.SetDestination(hit.position);
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("Could not find a valid NavMesh position for the ghost.");
+    //    }
+    //}
     void RunAwayFromPacMan()
     {
-        Vector3 directionAwayFromPacMan = transform.position - pacman.position;
-        agent.SetDestination(transform.position + directionAwayFromPacMan);
+        Vector3 directionAwayFromPacMan = (transform.position - pacman.position).normalized;
+        Vector3 targetPosition = transform.position + directionAwayFromPacMan * 10f;
+
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        {
+            // If ghost reached the destination, pick a new one
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(targetPosition, out hit, 5.0f, NavMesh.AllAreas))
+            {
+                agent.SetDestination(hit.position);
+            }
+        }
     }
+
+
+
 
     private void ExitFrightenedState()
     {

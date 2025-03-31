@@ -9,6 +9,9 @@ public class StablePacmanCamera : MonoBehaviour
     [SerializeField] private bool lockRotation = true;
     [SerializeField] private float xFollowFactor = 0.05f;
 
+    [Header("Z Boundaries")]
+    [SerializeField] private float minZ = -10f;
+    [SerializeField] private float maxZ = 20f;
 
     private Camera cameraComponent;
     private Quaternion initialRotation;
@@ -30,7 +33,6 @@ public class StablePacmanCamera : MonoBehaviour
             }
         }
 
-        // Store the initial camera rotation
         initialRotation = cameraComponent.transform.rotation;
     }
 
@@ -39,26 +41,27 @@ public class StablePacmanCamera : MonoBehaviour
         if (target == null || cameraComponent == null)
             return;
 
-        // Only follow position, not rotation
         Vector3 desiredPosition = target.position + offset;
-        // Vector3 smoothedPosition = Vector3.Lerp(cameraComponent.transform.position, desiredPosition, smoothSpeed);
         Vector3 currentPos = cameraComponent.transform.position;
+
         float newX = Mathf.Lerp(currentPos.x, desiredPosition.x, xFollowFactor);
         float newY = Mathf.Lerp(currentPos.y, desiredPosition.y, smoothSpeed);
         float newZ = Mathf.Lerp(currentPos.z, desiredPosition.z, smoothSpeed);
 
+        // Clamp Z to stay within map - solves problem of not seeing lower map once you reach the top
+        newZ = Mathf.Clamp(newZ, minZ, maxZ);
+
         cameraComponent.transform.position = new Vector3(newX, newY, newZ);
-        // cameraComponent.transform.position = smoothedPosition;
 
         if (lockRotation)
         {
-            // Use fixed rotation instead of LookAt
             cameraComponent.transform.rotation = initialRotation;
         }
         else
         {
-            // Usual LookAt behavior (hopefully never activated)
             cameraComponent.transform.LookAt(target);
         }
     }
 }
+
+

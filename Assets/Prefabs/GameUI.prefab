@@ -617,22 +617,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move: Use Arrow Keys or WASD
+  m_text: 'Move: Use WASD keys
 
 
-    Goal: Eat all the pellets to clear
-    the level
+    Goal: Eat all the pellets to clear the level
 
 
-    Avoid: Stay away from ghosts they''ll end your game!
+    Avoid:
+    Stay away from ghosts they''ll end your game!
 
 
-    Power
-    Ups: Eat pink pellets to temporarily chase down ghosts
+    Power Ups: Eat pink pellets
+    to temporarily chase down ghosts
 
 
-    Look for green Fruits
-    if you want to go faster!'
+    Look for green Fruits if you want to go
+    faster!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
   m_sharedMaterial: {fileID: 2294264204220767438, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
@@ -1264,7 +1264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.0621643, y: 2.5}
+  m_AnchoredPosition: {x: 4.062195, y: 2.5}
   m_SizeDelta: {x: -684.4448, y: -161.9071}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2531904548203078000

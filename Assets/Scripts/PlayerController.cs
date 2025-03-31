@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float sprintSpeed = 6f;
     [SerializeField] public float pelletSpeed = 5f;
 
+
     private Rigidbody rb;
     public bool hasSprintPowerup = false;
     public bool hasPelletPowerup = false;
@@ -45,6 +46,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void ResetMovement()
+    {
+        intendedDirection = Vector3.zero;
+        initialDirection = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
+    }
+
 
     public void DisableMovement()
     {
