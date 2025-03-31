@@ -6,12 +6,13 @@ public class Launchpad : MonoBehaviour
     [SerializeField] public Transform launchDestination;
     [SerializeField] public float launchHeight = 5f;
     [SerializeField] public float cooldownTime = 2f;
+    //private int triggerCount = 0;
 
 
     private void OnTriggerEnter(Collider other)
     {
-
-
+        //triggerCount++;
+        //Debug.Log($"Triggered {triggerCount} times at {Time.time}");
         if (other.CompareTag("Pacman"))
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
@@ -29,6 +30,7 @@ public class Launchpad : MonoBehaviour
                 float totalTime = GetTotalFlightTime(launchVelocity.y);
                 playerController.Invoke("EnableMovement", totalTime);
 
+                StartCoroutine(ResetCollider());
             }
         }
     }
@@ -58,6 +60,14 @@ public class Launchpad : MonoBehaviour
     {
         float gravity = Mathf.Abs(Physics.gravity.y);
         return (2 * verticalVelocity / gravity);
+    }
+
+    private IEnumerator ResetCollider()
+    {
+        Collider col = GetComponent<BoxCollider>();
+        col.enabled = false;
+        yield return new WaitForSeconds(cooldownTime);
+        col.enabled = true;
     }
 
 }
