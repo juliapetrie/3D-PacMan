@@ -986,7 +986,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: /189
+  m_text: /188
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
   m_sharedMaterial: {fileID: 2294264204220767438, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
@@ -2586,6 +2586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pellets
       objectReference: {fileID: 0}
+    - target: {fileID: 600550316563027430, guid: d7de42ce3c9ef81478758ceee7e01780, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1274627760656045657, guid: d7de42ce3c9ef81478758ceee7e01780, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.4888391
@@ -2627,7 +2631,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 294152552398893598, guid: d7de42ce3c9ef81478758ceee7e01780, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7de42ce3c9ef81478758ceee7e01780, type: 3}
