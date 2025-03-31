@@ -43,25 +43,36 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name != menuScene)
+        if (SceneManager.GetActiveScene().name != menuScene && nextLevelIndex == 0) 
         {
             SceneManager.LoadScene(menuScene);
         }
     }
 
+    private void Update()
+    {
+        // Check if the 'N' key is pressed and that not currently in menu scene (for testing)
+        if (Input.GetKeyDown(KeyCode.N) && SceneManager.GetActiveScene().name != menuScene)
+        {
+            LoadNextScene(); 
+        }
+    }
     private void OnSceneLoad(Scene scene, LoadSceneMode _)
     {
         // panel starts to left of screen 
         transitionCanvas.anchoredPosition = new Vector2(-Screen.width, 0);
-       if (scene.name == menuScene)
-    {
-        AudioManager.Instance.PlayMenuMusic(withFade: true);
+        if (scene.name == menuScene)
+        {
+            AudioManager.Instance.PlayMenuMusic(withFade: true);
+        }
+        else
+        {
+            // Determine level number for music pitch 
+            int levelNum = levels.IndexOf(scene.name) + 1; // Get 1-based index
+            if (levelNum <= 0) levelNum = 1; // Default to 1 if not found in list
+            AudioManager.Instance.PlayGameMusic(levelNum, withFade: true);
+        }
     }
-    else
-    {
-        AudioManager.Instance.PlayGameMusic(withFade: true);
-    }
-}
 
     public void LoadNextScene()
 {
