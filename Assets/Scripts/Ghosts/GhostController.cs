@@ -88,7 +88,7 @@ public class GhostController : MonoBehaviour
                 AudioManager.Instance.PlayLoseLifeSound();
                 livesManager.LoseLife();
             }
-
+        }
 
     }
 //    private void OnTriggerEnter(Collider other)
