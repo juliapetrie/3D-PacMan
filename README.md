@@ -1,4 +1,4 @@
-# Pacman³
+# Pacman³ https://juliapetrie.itch.io/pacman
 
 ### Updated Retro Game Jam Document
 Game Title: Pacman³
