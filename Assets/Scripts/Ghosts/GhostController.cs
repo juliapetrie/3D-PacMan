@@ -87,33 +87,57 @@ public class GhostController : MonoBehaviour
                 Debug.Log("Pacman was caught");
                 AudioManager.Instance.PlayLoseLifeSound();
                 livesManager.LoseLife();
+
+                if (GhostManager.Instance.countDownController != null)
+                {
+                    GhostManager.Instance.countDownController.DisableGameplay();
+                    StartCoroutine(GameReset());
+                }
+                else
+                {
+                    Debug.LogError("CountDownController not assigned!");
+                }
             }
         }
 
     }
-//    private void OnTriggerEnter(Collider other)
-//{
-//    if (!other.CompareTag("Pacman")) return;
+    private IEnumerator GameReset()
+    {
+        Debug.Log("Game paused for reset...");
+        yield return new WaitForSeconds(3f);
 
-//    PlayerController playerController = other.GetComponent<PlayerController>();
+        // Reset Pac-Man's Position
+        pacman.transform.position = GhostManager.Instance.pacmanstart.position;
+        GhostManager.Instance.pacman.ResetMovement();
+        GhostManager.Instance.countDownController.EnableGameplay();
+   
+        Debug.Log("Game resumed.");
+    }
 
-//    if (isFrightened)
-//    {
-//        Debug.Log("Pac-Man ate ghost!");
-//        returnHome();
-//    }
-//    else if (playerController != null)
-//    {
-//        if (playerController.hasPelletPowerup)
-//        {
-//            Debug.Log("pacman invincible");
-//            return; 
-//        }
 
-//        Debug.Log($"{gameObject.name} caught Pac-Man life -1");
-//        livesManager.LoseLife();
-//    }
-//}
+    //    private void OnTriggerEnter(Collider other)
+    //{
+    //    if (!other.CompareTag("Pacman")) return;
+
+    //    PlayerController playerController = other.GetComponent<PlayerController>();
+
+    //    if (isFrightened)
+    //    {
+    //        Debug.Log("Pac-Man ate ghost!");
+    //        returnHome();
+    //    }
+    //    else if (playerController != null)
+    //    {
+    //        if (playerController.hasPelletPowerup)
+    //        {
+    //            Debug.Log("pacman invincible");
+    //            return; 
+    //        }
+
+    //        Debug.Log($"{gameObject.name} caught Pac-Man life -1");
+    //        livesManager.LoseLife();
+    //    }
+    //}
 
 
 
