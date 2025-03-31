@@ -799,6 +799,7 @@ MonoBehaviour:
   - {fileID: 578034729}
   countDownController: {fileID: 2066114943}
   pacmanstart: {fileID: 1767877416}
+  pacman: {fileID: 1233695191}
 --- !u!4 &1035873983
 Transform:
   m_ObjectHideFlags: 0
