@@ -90,6 +90,10 @@ UI:
 - Julia:
   - Pacman flashing effect to indicate state change of invincibility/health. When Pacman eats a power pellet, he flashes to show speed and invincibility in navigating the map. When Pacman collides with a ghost, he flashes during a 1.5f cooldown period, which provides brief protection from ghosts, preventing double deaths; the flashing also indicates a change in health.
     - https://github.com/juliapetrie/3D-PacMan/commit/2476ef85580c32be7a56beccc6ce5454d509a7d7
+
+https://github.com/user-attachments/assets/10b58297-0d4c-4846-9be2-83cc44f6d78e
+
+
   - UI: I've created all game ui including level updates, score updates, lives left, exit, pause, play tutorial menu, countdown menu (count down controller used to pause gameplay and wait for tutorial screen to complete, logic also used for exit and pause buttons), as well as game over, game complete and next level messages to transition between scenes
     - https://github.com/juliapetrie/3D-PacMan/commit/02b4f88b0cecdaef0c6ae80830f6c8cb87da37f7
     - https://github.com/juliapetrie/3D-PacMan/commit/9af23a68f95ac2dc766952d38d26525c8723189f
