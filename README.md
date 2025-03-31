@@ -96,6 +96,9 @@ UI:
   - created game manager script to bring Pacman to the next or previous levels on conditions met; also handles ui pop-ups and audio calls.
     - https://github.com/juliapetrie/3D-PacMan/commit/dc2613507c46857fcc9bbe454102a79aaf879896  
 
+https://github.com/user-attachments/assets/c2a25e2a-c3b5-46d7-8d72-0a9ad56b1dfc
+
+
 
 
 
