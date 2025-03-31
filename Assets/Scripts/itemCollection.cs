@@ -104,6 +104,8 @@ public class itemCollection : MonoBehaviour
     
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PelletCounterUI pelletCounterUI;
+    [SerializeField] private GhostManager ghostManager;
+
 
     private void Start()
     {
@@ -138,6 +140,11 @@ public class itemCollection : MonoBehaviour
             Debug.Log("power pellet collected");
             AudioManager.Instance.PlaySpeedupSound(); 
             Destroy(other.gameObject);
+            if (ghostManager != null)
+            {
+                Debug.Log("ghost manager not null");
+                ghostManager.FrightenAllGhosts(pelletDuration);
+            }
             StartCoroutine(GivePelletPowerup());
         }
     }
