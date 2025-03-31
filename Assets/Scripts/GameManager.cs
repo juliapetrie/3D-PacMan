@@ -124,7 +124,8 @@ private IEnumerator HandleGameComplete()
         gameCompleteText.SetActive(false); // hide before use
     }
 
-    SceneManager.LoadScene(mainMenuScene); // Load main menu
+    // SceneManager.LoadScene(mainMenuScene); // Load main menu
+    SceneHandler.Instance.LoadMenuScene();
 }
 
 
