@@ -16,20 +16,30 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
     [SerializeField] private float animationDuration;
     [SerializeField] private RectTransform transitionCanvas;
 
-    [Header("Video Transition")]
-    [SerializeField] private VideoPlayer transitionVideo;         // video player object
-    [SerializeField] private GameObject transitionPanelObject;    // actual video - RawImage 
+    // [Header("Video Transition")]
+    // [SerializeField] private VideoPlayer transitionVideo;         // video player object
+    // [SerializeField] private GameObject transitionPanelObject;    // actual video - RawImage 
     private int nextLevelIndex;
     private float initXPosition;
     private string sceneToLoad;
 
-    protected override void Awake()
+   protected override void Awake()
+{
+    base.Awake();
+
+    if (Instance != this)
     {
-        base.Awake();
-        initXPosition = transitionCanvas.anchoredPosition.x;
-        SceneManager.sceneLoaded += OnSceneLoad;
-         var _ = AudioManager.Instance; //audio reference
+        Destroy(gameObject); // avoid duplicates
+        return;
     }
+
+    DontDestroyOnLoad(gameObject); // exist across all scenes
+
+    initXPosition = transitionCanvas.anchoredPosition.x;
+    SceneManager.sceneLoaded += OnSceneLoad;
+
+    var _ = AudioManager.Instance; // AudioManager is created
+}
 
     private void Start()
     {
@@ -54,80 +64,88 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
 }
 
     public void LoadNextScene()
-    {
-        if (nextLevelIndex >= levels.Count)
-        {
-            LoadMenuScene();
-        }
-        else
-        {
-            sceneToLoad = levels[nextLevelIndex];
-            nextLevelIndex++;
-            StartCoroutine(PacmanAnimationScene());
-        }
-    }
-
-    public void LoadMenuScene()
-    {
-        sceneToLoad = menuScene;
-        nextLevelIndex = 0;
-        StartCoroutine(PacmanAnimationScene());
-    }
-
-private IEnumerator PacmanAnimationScene()
 {
-    //video appears
-    transitionPanelObject.SetActive(true);
-    transitionVideo.gameObject.SetActive(true);
-
-    // video loads prior to slide in
-    transitionVideo.Stop();
-    transitionVideo.frame = 0;
-    transitionVideo.Prepare();
-
-    while (!transitionVideo.isPrepared)
-        yield return null;
-
-    Debug.Log("Video ready");
-
-    // video slides in
-    yield return transitionCanvas
-        .DOAnchorPos(Vector2.zero, animationDuration)
-        .SetEase(animationType)
-        .WaitForCompletion(); //waits till complete before exit right
-
-    //starts loading next scene
-    AsyncOperation loadOp = SceneManager.LoadSceneAsync(sceneToLoad);
-    loadOp.allowSceneActivation = false;
-
-    // Play the video once the transition is in place
-    transitionVideo.Play();
-    Debug.Log("Video playing");
-
-    bool videoFinished = false;
-    transitionVideo.loopPointReached += (_) =>
+    if (nextLevelIndex >= levels.Count)
     {
-        Debug.Log("Video done");
-        videoFinished = true;
-    };
+        LoadMenuScene();
+    }
+    else
+    {
+        sceneToLoad = levels[nextLevelIndex];
+        nextLevelIndex++;
+        StartCoroutine(LoadSceneWithSlide(sceneToLoad));
+    }
+}
 
-    yield return new WaitUntil(() => videoFinished);
+public void LoadMenuScene()
+{
+    sceneToLoad = menuScene;
+    nextLevelIndex = 0;
+    StartCoroutine(LoadSceneWithSlide(sceneToLoad));
+}
+
+private IEnumerator LoadSceneWithSlide(string scene)
+{
+    transitionCanvas.DOAnchorPos(Vector2.zero, animationDuration).SetEase(animationType);
+    yield return new WaitForSeconds(animationDuration);
+    SceneManager.LoadScene(scene);
+}
+}
+
+// private IEnumerator PacmanAnimationScene()
+// {
+//     //video appears
+//     transitionPanelObject.SetActive(true);
+//     transitionVideo.gameObject.SetActive(true);
+
+//     // video loads prior to slide in
+//     transitionVideo.Stop();
+//     transitionVideo.frame = 0;
+//     transitionVideo.Prepare();
+
+//     while (!transitionVideo.isPrepared)
+//         yield return null;
+
+//     Debug.Log("Video ready");
+
+//     // video slides in
+//     yield return transitionCanvas
+//         .DOAnchorPos(Vector2.zero, animationDuration)
+//         .SetEase(animationType)
+//         .WaitForCompletion(); //waits till complete before exit right
+
+//     //starts loading next scene
+//     AsyncOperation loadOp = SceneManager.LoadSceneAsync(sceneToLoad);
+//     loadOp.allowSceneActivation = false;
+
+//     // Play the video once the transition is in place
+//     transitionVideo.Play();
+//     Debug.Log("Video playing");
+
+//     bool videoFinished = false;
+//     transitionVideo.loopPointReached += (_) =>
+//     {
+//         Debug.Log("Video done");
+//         videoFinished = true;
+//     };
+
+//     yield return new WaitUntil(() => videoFinished);
 
 
-    //activates next scene during pacman video transition
-     loadOp.allowSceneActivation = true;
+//     //activates next scene during pacman video transition
+//      loadOp.allowSceneActivation = true;
 
-    // video exits to the right
-    yield return transitionCanvas
-        .DOAnchorPos(new Vector2(Screen.width, 0), animationDuration)
-        .SetEase(animationType)
-        .WaitForCompletion();
+//     // video exits to the right
+//     yield return transitionCanvas
+//         .DOAnchorPos(new Vector2(Screen.width, 0), animationDuration)
+//         .SetEase(animationType)
+//         .WaitForCompletion();
 
  
 
-}
+// }
 
-}
+// }
 
 
 

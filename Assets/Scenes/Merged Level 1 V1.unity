@@ -462,6 +462,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c985fb274558e754caddd8f97f830421, type: 3}
+--- !u!1 &406016515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2006609803626253246, guid: c985fb274558e754caddd8f97f830421, type: 3}
+  m_PrefabInstance: {fileID: 406016514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &406016516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1513041683677327544, guid: c985fb274558e754caddd8f97f830421, type: 3}
+  m_PrefabInstance: {fileID: 406016514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &406016517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7972714009302907853, guid: c985fb274558e754caddd8f97f830421, type: 3}
+  m_PrefabInstance: {fileID: 406016514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &406016518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7066406735493006930, guid: c985fb274558e754caddd8f97f830421, type: 3}
+  m_PrefabInstance: {fileID: 406016514}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f0f929e839ea6478200ffd09f30155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &583014816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -674,10 +700,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92dd0116e242cb644ac7325c9eeabc7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelCompleteText: {fileID: 0}
-  gameCompleteText: {fileID: 0}
-  LevelFailText: {fileID: 0}
-  countdownController: {fileID: 0}
+  levelCompleteText: {fileID: 406016517}
+  gameCompleteText: {fileID: 406016516}
+  LevelFailText: {fileID: 406016515}
+  countdownController: {fileID: 406016518}
 --- !u!4 &623335856
 Transform:
   m_ObjectHideFlags: 0

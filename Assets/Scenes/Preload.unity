@@ -165,11 +165,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - Level 1
-  - Level 2
-  menuScene: MainMenu
+  - Merged Level 1 V1
+  - Merged Level 2 V1
+  - Merged Level 3 V1
+  menuScene: StartMenu - Julia
   animationType: 19
-  animationDuration: 1
+  animationDuration: 0
   transitionCanvas: {fileID: 1003730455}
 --- !u!114 &681802681
 MonoBehaviour:
