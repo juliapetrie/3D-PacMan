@@ -104,7 +104,7 @@ public class GhostController : MonoBehaviour
     private IEnumerator GameReset()
     {
         Debug.Log("Game paused for reset...");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         // Reset Pac-Man's Position
         pacman.transform.position = GhostManager.Instance.pacmanstart.position;
