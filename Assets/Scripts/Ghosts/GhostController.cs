@@ -215,11 +215,46 @@ public class GhostController : MonoBehaviour
         Debug.Log("Ghost is now frightened for " + duration + " seconds!");
     }
 
+    //void RunAwayFromPacMan()
+    //{
+    //    Vector3 directionAwayFromPacMan = transform.position - pacman.position;
+    //    agent.SetDestination(transform.position + directionAwayFromPacMan);
+    //}
+    //void RunAwayFromPacMan()
+    //{
+    //    Vector3 directionAwayFromPacMan = transform.position - pacman.position;
+    //    Vector3 targetPosition = transform.position + directionAwayFromPacMan.normalized * 5f; // Adjust 5f as needed for distance
+
+    //    // Ensure the position is on the NavMesh
+    //    NavMeshHit hit;
+    //    if (NavMesh.SamplePosition(targetPosition, out hit, 5.0f, NavMesh.AllAreas))
+    //    {
+    //        Debug.Log("ghost running away from pacman idk");
+    //        agent.SetDestination(hit.position);
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("Could not find a valid NavMesh position for the ghost.");
+    //    }
+    //}
     void RunAwayFromPacMan()
     {
-        Vector3 directionAwayFromPacMan = transform.position - pacman.position;
-        agent.SetDestination(transform.position + directionAwayFromPacMan);
+        Vector3 directionAwayFromPacMan = (transform.position - pacman.position).normalized;
+        Vector3 targetPosition = transform.position + directionAwayFromPacMan * 10f;
+
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        {
+            // If ghost reached the destination, pick a new one
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(targetPosition, out hit, 5.0f, NavMesh.AllAreas))
+            {
+                agent.SetDestination(hit.position);
+            }
+        }
     }
+
+
+
 
     private void ExitFrightenedState()
     {
