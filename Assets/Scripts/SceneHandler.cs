@@ -28,6 +28,7 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         base.Awake();
         initXPosition = transitionCanvas.anchoredPosition.x;
         SceneManager.sceneLoaded += OnSceneLoad;
+         var _ = AudioManager.Instance; //audio reference
     }
 
     private void Start()
@@ -42,8 +43,15 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
     {
         // panel starts to left of screen 
         transitionCanvas.anchoredPosition = new Vector2(-Screen.width, 0);
-
+       if (scene.name == menuScene)
+    {
+        AudioManager.Instance.PlayMenuMusic(withFade: true);
     }
+    else
+    {
+        AudioManager.Instance.PlayGameMusic(withFade: true);
+    }
+}
 
     public void LoadNextScene()
     {

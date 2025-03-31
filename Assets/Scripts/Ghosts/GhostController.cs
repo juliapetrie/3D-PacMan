@@ -79,15 +79,17 @@ public class GhostController : MonoBehaviour
             if (isFrightened)
             {
                 Debug.Log("Pac-Man caught the ghost!");
+                AudioManager.Instance.PlayGhostEatenSound();
                 returnHome();
             }
             else
             {
                 Debug.Log("Pacman was caught");
+                AudioManager.Instance.PlayLoseLifeSound();
                 livesManager.LoseLife();
             }
 
-        }
+
     }
 //    private void OnTriggerEnter(Collider other)
 //{
