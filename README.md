@@ -33,9 +33,9 @@ Game Structure:
 - To complete the game, the player must successfully finish all three levels by collecting all the pellets and avoiding the ghosts. 
 Progression System: 
 - The difficulty will increase as the ghosts speed up. The map changes, making it more challenging to collect the pellets. Occasional power-ups will be offered when the player runs through pink power pellets; upon doing so, Pacman is invincible to ghosts and has a sprint power-up. If Pac-man runs through the green fruit powerups, he becomes faster for a limited amount of time. The launch pads in level 1 are placed strategically to benefit players; they are less helpful in later levels (you don’t travel as far, or you don’t land near a power-up).
-- In level 1, there are five sprint powerups and two power pellets (invincible)
-- In level 2, there are three sprint powerups and one power pellet
-- In level 3, there are three sprint powerups and one power pellet
+- In level 1, there are five sprint powerups and five power pellets (invincible)
+- In level 2, there are three sprint powerups and four power pellet
+- In level 3, there are three sprint powerups and three power pellet
 - The map gets progressively trickier to navigate as the player levels up. 
 
 #### Scoring & Win/Loss Conditions
