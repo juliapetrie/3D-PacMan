@@ -86,4 +86,21 @@ UI:
 - Loading scene, level up, end game font (CC) license) Arcade by Yuji Adachi https://www.dafont.com/arcade-ya.font
 - Our team will create all additional UI icons using Adobe Illustrator.
 
+## Commits & Highlighted Features Per Team Member
+- Julia:
+  - Pacman flashing effect to indicate state change of invincibility/health. When Pacman eats a power pellet, he flashes to show speed and invincibility in navigating the map. When Pacman collides with a ghost, he flashes during a 1.5f cooldown period, which provides brief protection from ghosts, preventing double deaths; the flashing also indicates a change in health.
+    - https://github.com/juliapetrie/3D-PacMan/commit/2476ef85580c32be7a56beccc6ce5454d509a7d7
+  - UI: I've created all game ui including level updates, score updates, lives left, exit, pause, play tutorial menu, countdown menu (count down controller used to pause gameplay and wait for tutorial screen to complete, logic also used for exit and pause buttons), as well as game over, game complete and next level messages to transition between scenes
+    - https://github.com/juliapetrie/3D-PacMan/commit/02b4f88b0cecdaef0c6ae80830f6c8cb87da37f7
+    - https://github.com/juliapetrie/3D-PacMan/commit/9af23a68f95ac2dc766952d38d26525c8723189f
+  - created game manager script to bring Pacman to the next or previous levels on conditions met; also handles ui pop-ups and audio calls.
+    - https://github.com/juliapetrie/3D-PacMan/commit/dc2613507c46857fcc9bbe454102a79aaf879896  
+
+
+
+
+
+- Ivona: 
+- Stefan:
+- Daniel: 
 
