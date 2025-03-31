@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Preload.unity
     guid: 603c030cf58199b4b9109c8d3e4c93a8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Preload - Julia.unity
     guid: 5284f290d357124499917920adaa6d67
   - enabled: 1

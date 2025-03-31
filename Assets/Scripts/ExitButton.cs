@@ -8,6 +8,6 @@ public class ExitButton : MonoBehaviour
     public void ExitToMenu()
     {
         Debug.Log("Exit Button Clicked - Loading Main Menu");
-        SceneManager.LoadScene(menuScene); 
+         SceneHandler.Instance.LoadMenuScene(); 
     }
 }
