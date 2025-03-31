@@ -11,6 +11,9 @@ TagManager:
   - PowerPellet
   - Pellet
   - Ghost
+  - TeleportWall
+  - leftTeleportWall
+  - rightTeleportWall
   layers:
   - Default
   - TransparentFX
