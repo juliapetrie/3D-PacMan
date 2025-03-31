@@ -47,6 +47,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ResetMovement()
+    {
+        intendedDirection = Vector3.zero;
+        initialDirection = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
+    }
+
+
     public void DisableMovement()
     {
         canMove = false;
