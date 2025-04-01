@@ -107,9 +107,9 @@ https://github.com/user-attachments/assets/c2a25e2a-c3b5-46d7-8d72-0a9ad56b1dfc
   - Map PathFinding with NavMesh: Made 4 ghosts who walk on the ground by using the navmesh system. https://github.com/juliapetrie/3D-PacMan/pull/23
   - PacMan return home mechanism: When pacman gets eaten he returns to his original position. https://github.com/juliapetrie/3D-PacMan/pull/31
   - Ghost UI: Made the looks of the ghosts. https://github.com/juliapetrie/3D-PacMan/pull/42 https://github.com/juliapetrie/3D-PacMan/pull/43
-Video: https://github.com/user-attachments/assets/e7eca4da-e6b9-413d-9dad-ce62c27279ce
+    Video: https://github.com/user-attachments/assets/e7eca4da-e6b9-413d-9dad-ce62c27279ce
   - Ghost State Movement Logic: Made the 4 ghosts follow certain states such as Frightened, Scatter and Chase. Each ghost has different methods for the chase state and different points in scatter mode. https://github.com/juliapetrie/3D-PacMan/pull/7
-Video: https://github.com/user-attachments/assets/fc9a1d8c-a47c-476f-a5cd-7c6a89d5fbaa
+    Video: https://github.com/user-attachments/assets/fc9a1d8c-a47c-476f-a5cd-7c6a89d5fbaa
 
 
 - Stefan:      
