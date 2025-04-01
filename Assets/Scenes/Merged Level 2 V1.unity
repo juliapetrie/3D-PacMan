@@ -626,7 +626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: /230
+  m_text: /234
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
   m_sharedMaterial: {fileID: 2294264204220767438, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
@@ -2497,75 +2497,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4606840206826423992, guid: 80de930b3e3a11a4a8922c090568223e, type: 3}
   m_PrefabInstance: {fileID: 1918325127}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1922371768
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -98.0905
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.3449993
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6181724756739682828, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8411009247803547614, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
-      propertyPath: m_Name
-      value: Pellet (110)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b4a5db51dbbbd9d4ea1fcb0395a006ca, type: 3}
 --- !u!1001 &1959182191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2838,6 +2769,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level2-final (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5605119102378128701, guid: deda0172d8194d148ad536b9453fce0a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164211117341460448, guid: deda0172d8194d148ad536b9453fce0a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7494607980271793955, guid: deda0172d8194d148ad536b9453fce0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.009
@@ -2944,6 +2883,10 @@ PrefabInstance:
     - target: {fileID: 5827676017886547462, guid: 32f004128559b2b4b89cd897b3e4c6e7, type: 3}
       propertyPath: m_Name
       value: Pellets
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827676017886547462, guid: 32f004128559b2b4b89cd897b3e4c6e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8600255327217524147, guid: 32f004128559b2b4b89cd897b3e4c6e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3056,4 +2999,3 @@ SceneRoots:
   - {fileID: 318468088}
   - {fileID: 1833312484}
   - {fileID: 1039477993}
-  - {fileID: 1922371768}

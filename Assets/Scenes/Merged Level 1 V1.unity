@@ -148,6 +148,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1003573874325002343, guid: 8ef1762a39b634b4e9427459b1d36347, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1297806849430712053, guid: 8ef1762a39b634b4e9427459b1d36347, type: 3}
       propertyPath: m_LocalScale.x
       value: 6
@@ -163,6 +167,10 @@ PrefabInstance:
     - target: {fileID: 1711247768123726033, guid: 8ef1762a39b634b4e9427459b1d36347, type: 3}
       propertyPath: m_LocalPosition.z
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572641943670029448, guid: 8ef1762a39b634b4e9427459b1d36347, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5863785258339278723, guid: 8ef1762a39b634b4e9427459b1d36347, type: 3}
       propertyPath: m_Name
@@ -1080,7 +1088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: /188
+  m_text: /183
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
   m_sharedMaterial: {fileID: 2294264204220767438, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
