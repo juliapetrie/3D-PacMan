@@ -85,6 +85,8 @@ public class GhostController : MonoBehaviour
             {
                 Debug.Log("Pac-Man caught the ghost!");
                 AudioManager.Instance.PlayGhostEatenSound();
+                GhostManager.Instance.countDownController.DisableGameplay();
+                StartCoroutine(GamePause());
                 returnHome();
             }
             else
@@ -116,7 +118,20 @@ public class GhostController : MonoBehaviour
         pacman.transform.position = GhostManager.Instance.pacmanstart.position;
         GhostManager.Instance.pacman.ResetMovement();
         GhostManager.Instance.countDownController.EnableGameplay();
-   
+
+        Debug.Log("Game resumed.");
+    }
+
+    private IEnumerator GamePause()
+    {
+        Debug.Log("Game paused for eaten ghost...");
+        yield return new WaitForSeconds(1f);
+
+
+
+        GhostManager.Instance.pacman.ResetMovement();
+        GhostManager.Instance.countDownController.EnableGameplay();
+
         Debug.Log("Game resumed.");
     }
 
