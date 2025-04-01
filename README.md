@@ -109,6 +109,10 @@ https://github.com/user-attachments/assets/c2a25e2a-c3b5-46d7-8d72-0a9ad56b1dfc
   - Ghost UI: Made the looks of the ghosts.
 https://github.com/user-attachments/assets/e7eca4da-e6b9-413d-9dad-ce62c27279ce
 
+
+https://github.com/user-attachments/assets/fc9a1d8c-a47c-476f-a5cd-7c6a89d5fbaa
+
+
   - Ghost State Movement Logic: Made the 4 ghosts follow certain states such as Frightened, Scatter and Chase. Each ghost has different methods for the chase state and different points in scatter mode.
 
 
