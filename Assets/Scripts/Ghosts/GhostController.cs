@@ -71,15 +71,22 @@ public class GhostController : MonoBehaviour
             HandleState();
         }
     }
-
+    private bool collisionHandled = false;
     private void OnTriggerEnter(Collider other)
     {
+        if (collisionHandled)
+            return;
+
         if (other.CompareTag("Pacman"))
         {
+
+            collisionHandled = true;
             if (isFrightened)
             {
                 Debug.Log("Pac-Man caught the ghost!");
                 AudioManager.Instance.PlayGhostEatenSound();
+                GhostManager.Instance.countDownController.DisableGameplay();
+                StartCoroutine(GamePause());
                 returnHome();
             }
             else
@@ -105,12 +112,26 @@ public class GhostController : MonoBehaviour
     {
         Debug.Log("Game paused for reset...");
         yield return new WaitForSeconds(2f);
+        collisionHandled = false;
 
         // Reset Pac-Man's Position
         pacman.transform.position = GhostManager.Instance.pacmanstart.position;
         GhostManager.Instance.pacman.ResetMovement();
         GhostManager.Instance.countDownController.EnableGameplay();
-   
+
+        Debug.Log("Game resumed.");
+    }
+
+    private IEnumerator GamePause()
+    {
+        Debug.Log("Game paused for eaten ghost...");
+        yield return new WaitForSeconds(1f);
+
+
+
+        GhostManager.Instance.pacman.ResetMovement();
+        GhostManager.Instance.countDownController.EnableGameplay();
+
         Debug.Log("Game resumed.");
     }
 
@@ -285,6 +306,7 @@ public class GhostController : MonoBehaviour
     private void ExitFrightenedState()
     {
         isFrightened = false;
+        collisionHandled = false;
         agent.speed = normalSpeed;
         Debug.Log("Ghost is no longer frightened!");
     }
