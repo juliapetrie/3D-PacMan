@@ -53,15 +53,18 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
     {
         // panel starts to left of screen 
         transitionCanvas.anchoredPosition = new Vector2(-Screen.width, 0);
-       if (scene.name == menuScene)
-    {
-        AudioManager.Instance.PlayMenuMusic(withFade: true);
+        if (scene.name == menuScene)
+        {
+            AudioManager.Instance.PlayMenuMusic(withFade: true);
+        }
+        else
+        {
+            // Determine level number for music pitch 
+            int levelNum = levels.IndexOf(scene.name) + 1; // Get 1-based index
+            if (levelNum <= 0) levelNum = 1; // Default to 1 if not found in list
+            AudioManager.Instance.PlayGameMusic(levelNum, withFade: true);
+        }
     }
-    else
-    {
-        AudioManager.Instance.PlayGameMusic(withFade: true);
-    }
-}
 
     public void LoadNextScene()
 {
@@ -77,7 +80,16 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
     }
 }
 
-public void LoadMenuScene()
+    private void Update()
+    {
+        // Check if the 'N' key is pressed and that not currently in menu scene (for testing)
+        if (Input.GetKeyDown(KeyCode.N) && SceneManager.GetActiveScene().name != menuScene)
+        {
+            LoadNextScene();
+        }
+    }
+
+    public void LoadMenuScene()
 {
     sceneToLoad = menuScene;
     nextLevelIndex = 0;
