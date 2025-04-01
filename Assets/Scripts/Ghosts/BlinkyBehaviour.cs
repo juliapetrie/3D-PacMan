@@ -3,15 +3,16 @@ using UnityEngine;
 public class BlinkyBehaviour : GhostBehaviour
 {
     public Transform BlinkyScatterTarget;
+
     protected override void Chase()
     {
-        agent.SetDestination(pacman.position);
+        // Validate and set destination to Pac-Man's position
+        SetValidatedDestination(pacman.position);
     }
 
     protected override void Scatter()
     {
-        agent.SetDestination(BlinkyScatterTarget.position);
+        // Validate and set destination to Blinky's scatter target
+        SetValidatedDestination(BlinkyScatterTarget.position);
     }
-    
-
 }

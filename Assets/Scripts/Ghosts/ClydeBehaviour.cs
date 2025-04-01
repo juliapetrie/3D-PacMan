@@ -8,24 +8,23 @@ public class ClydeBehaviour : GhostBehaviour
 
     protected override void Chase()
     {
-        if (agent == null || pacman == null || bottomLeftCorner == null) return;
+        if (agent == null || pacman == null || bottomLeftCorner == null)
+            return;
 
         float distanceToPacman = Vector3.Distance(transform.position, pacman.position);
 
         if (distanceToPacman < distanceThreshold)
         {
-            agent.SetDestination(bottomLeftCorner.position);
+            SetValidatedDestination(bottomLeftCorner.position);
         }
         else
         {
-            agent.SetDestination(pacman.position);
+            SetValidatedDestination(pacman.position);
         }
     }
 
     protected override void Scatter()
     {
-        agent.SetDestination(ClydeScatterTarget.position);
+        SetValidatedDestination(ClydeScatterTarget.position);
     }
-
-   
 }
