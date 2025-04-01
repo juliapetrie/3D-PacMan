@@ -54,10 +54,9 @@ Score System:
   - Pacman dies(loses a life) when touched by a ghost
   - Sprint ability (While Pacman is fruit powered-up)
 - Implement ghost mechanics - Ivona
-  - Ghost dies when touched by powered-up Pacman,
-  - They get progressively faster each time they die and are released
-  - Each ghost has its own properties (speed, difficulty)
-  - Including navmesh setup
+  - Ghost returns back home (is infrighten state) when touched by powered-up Pacman - Ivona
+  - Each ghost has its own properties (scatter spots, chase mechanisms, looks) - Ivona
+  - Including navmesh setup - Ivona
 - Create a sample level - MAP to test mechanics - Julia
 - Create all UI elements - Julia
 - The cinematic camera setup follows Pac-Man movement and is informed by the direction indicator. The camera will be positioned just above the wall so the player can see parts of the map.  - Daniel, Julia
@@ -67,6 +66,7 @@ Score System:
 - Create two more map levels, each with greater complexity - Julia, Stefan
 - Create a UI and menu’s -Julia
 - Create advanced ghost implementations building off of the prior week, including homing effect for ghosts and Pacman on collision - Ivona
+- Created the look of the ghosts - Ivona
 - Continued development of Launchpads and addition of teleportation - Stefan
 - Audio script - Daniel
 - Add effects (Pacman flash effect), sound effects/audio setup, and other polish (JUICE) - Julia, Daniel
@@ -104,19 +104,13 @@ https://github.com/user-attachments/assets/10b58297-0d4c-4846-9be2-83cc44f6d78e
 https://github.com/user-attachments/assets/c2a25e2a-c3b5-46d7-8d72-0a9ad56b1dfc
 
 - Ivona:
-  - Map PathFinding with NavMesh: Made 4 ghosts who walk on the ground by using the navmesh system.
-  - PacMan return home mechanism: When pacman gets eaten he return to his original position.
-  - Ghost UI: Made the looks of the ghosts.
+  - Map PathFinding with NavMesh: Made 4 ghosts who walk on the ground by using the navmesh system. https://github.com/juliapetrie/3D-PacMan/pull/23
+  - PacMan return home mechanism: When pacman gets eaten he returns to his original position. https://github.com/juliapetrie/3D-PacMan/pull/31
+  - Ghost UI: Made the looks of the ghosts. https://github.com/juliapetrie/3D-PacMan/pull/42 https://github.com/juliapetrie/3D-PacMan/pull/43
 https://github.com/user-attachments/assets/e7eca4da-e6b9-413d-9dad-ce62c27279ce
-
-
+  - Ghost State Movement Logic: Made the 4 ghosts follow certain states such as Frightened, Scatter and Chase. Each ghost has different methods for the chase state and different points in scatter mode. https://github.com/juliapetrie/3D-PacMan/pull/7
 https://github.com/user-attachments/assets/fc9a1d8c-a47c-476f-a5cd-7c6a89d5fbaa
 
-
-  - Ghost State Movement Logic: Made the 4 ghosts follow certain states such as Frightened, Scatter and Chase. Each ghost has different methods for the chase state and different points in scatter mode.
-
-
-  
 
 - Stefan:      
   - **Player mechanics**. Pacman moves rigidly with a buffered movement direction. The player can make their movement choice infinitely before getting to their turn. Utilizes raycasts from the edges of the pacman object to detect walls and determine if the player can move in the desired direction. https://github.com/juliapetrie/3D-PacMan/pull/2 - player mechanics, fruit powerup
