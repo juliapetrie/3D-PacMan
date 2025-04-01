@@ -107,7 +107,7 @@ https://github.com/user-attachments/assets/c2a25e2a-c3b5-46d7-8d72-0a9ad56b1dfc
   - Map PathFinding with NavMesh: Made 4 ghosts who walk on the ground by using the navmesh system.
   - Ghost State Movement Logic: Made the 4 ghosts follow certain states such as Frightened, Scatter and Chase. Each ghost has different methods for the chase state and different points in scatter mode.
   - PacMan return home mechanism: When pacman gets eaten he return to his original position.
-  - Ghost UI: 
+  - Ghost UI: Made the looks of the ghosts.
 
 - Stefan:      
   - **Player mechanics**. Pacman moves rigidly with a buffered movement direction. The player can make their movement choice infinitely before getting to their turn. Utilizes raycasts from the edges of the pacman object to detect walls and determine if the player can move in the desired direction. https://github.com/juliapetrie/3D-PacMan/pull/2 - player mechanics, fruit powerup
