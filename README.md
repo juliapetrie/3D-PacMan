@@ -51,23 +51,23 @@ Score System:
 - ##### Week 1: Core Mechanics & Gameplay Elements
 - Set up a basic Unity project - Julia
 - Implement player input and core mechanics (movement, abilities) - Stefan
-- Pacman dies(loses a life) when touched by a ghost
-- Sprint ability (While Pacman is fruit powered-up)
+  - Pacman dies(loses a life) when touched by a ghost
+  - Sprint ability (While Pacman is fruit powered-up)
 - Implement ghost mechanics - Ivona
-- Ghost dies when touched by powered-up Pacman,
-- They get progressively faster each time they die and are released
-- Each ghost has its own properties (speed, difficulty)
-- Including navmesh setup
+  - Ghost dies when touched by powered-up Pacman,
+  - They get progressively faster each time they die and are released
+  - Each ghost has its own properties (speed, difficulty)
+  - Including navmesh setup
 - Create a sample level - MAP to test mechanics - Julia
-- Create UI elements - Julia
-- The cinematic camera setup follows Pac-Man movement and is informed by the direction indicator. Camera will be positioned just above the wall so the player can see parts of the map.  - Daniel, Julia
-- Launchpad. Character movement disabled midair.Stefan
+- Create all UI elements - Julia
+- The cinematic camera setup follows Pac-Man movement and is informed by the direction indicator. The camera will be positioned just above the wall so the player can see parts of the map.  - Daniel, Julia
+- Launchpad. Character movement disabled midair - Stefan
 
 - ##### Week 2: Polish Mechanics & Troubleshoot Bugs & Finalize
 - Create two more map levels, each with greater complexity - Julia, Stefan
 - Create a UI and menu’s -Julia
 - Create advanced ghost implementations building off of the prior week, including homing effect for ghosts and Pacman on collision - Ivona
-- Continued development of Launchpads and addition of teleportation <Stefan>
+- Continued development of Launchpads and addition of teleportation - Stefan
 - Audio script - Daniel
 - Add effects (Pacman flash effect), sound effects/audio setup, and other polish (JUICE) - Julia, Daniel
 - Implement a game manager object that oversees score, levels, game completion, and failure. - Julia
