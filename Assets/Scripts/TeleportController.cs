@@ -8,20 +8,26 @@ public class TeleportController : MonoBehaviour
 
 
     private bool canTeleport = true;
-    private Collider playerCollider; // Declare the playerCollider variable
+    private Collider playerCollider;
+
 
     void Start()
     {
-        playerCollider = GetComponent<Collider>(); // Initialize playerCollider
+        playerCollider = GetComponent<Collider>();
     }
 
     private IEnumerator TeleportCooldown(Collider other)
     {
+        //disabling and re-enabling allows the player to teleport multiple times
+        //disable colliders
         canTeleport = false;
-        playerCollider.enabled = false; // Disable collider
+        playerCollider.enabled = false;
         other.enabled = false;
-        yield return new WaitForSeconds(0.25f); // Wait briefly
-        playerCollider.enabled = true; // Re-enable collider
+
+        yield return new WaitForSeconds(0.25f);
+
+        //enable colliders
+        playerCollider.enabled = true;
         other.enabled = true;
         canTeleport = true;
     }
