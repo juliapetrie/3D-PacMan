@@ -928,6 +928,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5298146968978616234, guid: c985fb274558e754caddd8f97f830421, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7066406735493006930, guid: c985fb274558e754caddd8f97f830421, type: 3}
       propertyPath: player
       value: 

@@ -397,6 +397,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 697951706525422778, guid: c985fb274558e754caddd8f97f830421, type: 3}
+      propertyPath: m_fontStyle
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 697951706525422778, guid: c985fb274558e754caddd8f97f830421, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2947396380990643622, guid: c985fb274558e754caddd8f97f830421, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -476,6 +484,10 @@ PrefabInstance:
     - target: {fileID: 2947396380990643622, guid: c985fb274558e754caddd8f97f830421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628561139164342747, guid: c985fb274558e754caddd8f97f830421, type: 3}
+      propertyPath: m_fontStyle
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 7066406735493006930, guid: c985fb274558e754caddd8f97f830421, type: 3}
       propertyPath: player
@@ -1008,8 +1020,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: /188
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
+  m_sharedMaterial: {fileID: 2294264204220767438, guid: 4bfd13ea45e138643819132af535eafc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
