@@ -109,9 +109,15 @@ https://github.com/user-attachments/assets/c2a25e2a-c3b5-46d7-8d72-0a9ad56b1dfc
 
 - Ivona: 
 - Stefan:      
-  - Player mechanics. Pacman moves rigidly with a buffered movement direction. The player can make their movement choice infinitely before getting to their turn. Utilizes raycasts from the edges of the pacman object to detect walls and determine if the player can move in the desired direction. https://github.com/juliapetrie/3D-PacMan/pull/2 - player mechanics, fruit powerup
-    
-  - Launchpad. Pacman can hit the launch platform and is thrown into a pre-calculated trajectory. This gives the player another escape route and therefore decreases the difficulty of the game. Attempting to change multiple parameters on the launch was tricky, so I left only the launch height which allowed me to somewhat control speed. https://github.com/juliapetrie/3D-PacMan/pull/6 - launchpad and power pellets
-  - teleportation passages. Pacman can use the left and right sides of the maps to escape from the ghosts, however ghosts cannot due to the complexity of the Navmesh implementation (unlike original pacman). https://github.com/juliapetrie/3D-PacMan/pull/39 - Passages (teleport walls)
+  - **Player mechanics**. Pacman moves rigidly with a buffered movement direction. The player can make their movement choice infinitely before getting to their turn. Utilizes raycasts from the edges of the pacman object to detect walls and determine if the player can move in the desired direction. https://github.com/juliapetrie/3D-PacMan/pull/2 - player mechanics, fruit powerup
+  - **Launchpad**. Pacman can hit the launch platform and is thrown into a pre-calculated trajectory. This gives the player another escape route and therefore decreases the difficulty of the game. Attempting to change multiple parameters on the launch was tricky, so I left only the launch height which allowed me to somewhat control speed. https://github.com/juliapetrie/3D-PacMan/pull/6 - launchpad and power pellets
+  - **teleportation passages**. Pacman can use the left and right sides of the maps to escape from the ghosts, however ghosts cannot due to the complexity of the Navmesh implementation (unlike original pacman). https://github.com/juliapetrie/3D-PacMan/pull/39 - Passages (teleport walls)
+  - The following videos show player movement, launchpad, and passage functionality.
+
+https://github.com/user-attachments/assets/1aa9e654-d280-4f4d-833a-b1338883928c
+
+https://github.com/user-attachments/assets/3a75c892-df54-407c-afcd-19ebbeec84c7
+
+
 - Daniel: 
 
