@@ -103,12 +103,12 @@ https://github.com/user-attachments/assets/10b58297-0d4c-4846-9be2-83cc44f6d78e
 
 https://github.com/user-attachments/assets/c2a25e2a-c3b5-46d7-8d72-0a9ad56b1dfc
 
+- Ivona:
+  - Map PathFinding with NavMesh: Made 4 ghosts who walk on the ground by using the navmesh system.
+  - Ghost State Movement Logic: Made the 4 ghosts follow certain states such as Frightened, Scatter and Chase. Each ghost has different methods for the chase state and different points in scatter mode.
+  - PacMan return home mechanism: When pacman gets eaten he return to his original position.
+  - Ghost UI: 
 
-
-
-
-
-- Ivona: 
 - Stefan:      
   - **Player mechanics**. Pacman moves rigidly with a buffered movement direction. The player can make their movement choice infinitely before getting to their turn. Utilizes raycasts from the edges of the pacman object to detect walls and determine if the player can move in the desired direction. https://github.com/juliapetrie/3D-PacMan/pull/2 - player mechanics, fruit powerup
   - **Launchpad**. Pacman can hit the launch platform and is thrown into a pre-calculated trajectory. This gives the player another escape route and therefore decreases the difficulty of the game. Attempting to change multiple parameters on the launch was tricky, so I left only the launch height which allowed me to somewhat control speed. https://github.com/juliapetrie/3D-PacMan/pull/6 - launchpad and power pellets
